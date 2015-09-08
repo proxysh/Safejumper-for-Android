@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ ~ Copyleft (/c) MMXV, Proxy.sh
+ ~ Distributed under the GNU GPL v2
+  -->
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Black.NoTitleBar">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <color name="FormBackgroundColor">#F8F8F8</color>
+    <color name="ActionBarBackground">#F8F9F9</color>
+    <color name="ActionLineColor">#B2B2B2</color>
+    <color name="HintTextColor">#B3B3B3</color>
+    <color name="ActionTextColor">#C9001F</color>
+    <color name="StatePanelTextColor">#5a5a5a</color>
+    <color name="ConnectedTextColor">#05a618</color>
+    <color name="DisconnectedTextColor">#ad1111</color>
+    <color name="ConnectingTextColor">#d2bf1d</color>
+    
+</resources>

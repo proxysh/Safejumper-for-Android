@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ ~ Copyleft (/c) MMXV, Proxy.sh
+ ~ Distributed under the GNU GPL v2
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/FormBackgroundColor"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".AppActivity" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/ActionLineColor" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/ActionBarBackground" >
+
+            <Button
+                android:id="@+id/tabBtnConnect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/connect_button_selector" />
+
+            <Button
+                android:id="@+id/tabBtnDisconnect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/disconnect_button_selector"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/tabBtnSetting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/settings_button_selector" />
+
+            <Button
+                android:id="@+id/tabBtnSafejump"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/safejump_button_selector" />
+
+            <Button
+                android:id="@+id/tabBtnLogs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/logs_button_selector" />
+
+            <Button
+                android:id="@+id/tabBtnPanel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/panel_button_selector" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_alignLeft="@+id/linearLayout2"
+        android:layout_alignParentTop="true" >
+
+    </FrameLayout>
+
+    
+
+</RelativeLayout>

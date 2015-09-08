@@ -1,0 +1,5 @@
+include ':main', ':app', ':remoteExample', ':vpndialogxposed'
+project(':main').projectDir = new File('ics-openvpn/main')
+project(':app').projectDir = new File('app')
+project(':remoteExample').projectDir = new File('ics-openvpn/remoteExample')
+project(':vpndialogxposed').projectDir = new File('ics-openvpn/vpndialogxposed')
