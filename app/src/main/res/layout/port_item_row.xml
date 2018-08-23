@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ ~ Copyleft (/c) MMXV, Proxy.sh
+ ~ Distributed under the GNU GPL v2
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="@dimen/item_height"
+    android:paddingBottom="@dimen/control_vertical_margin"
+    android:paddingLeft="@dimen/control_horizontal_margin"
+    android:paddingRight="@dimen/control_horizontal_margin"
+    android:paddingTop="@dimen/control_vertical_margin" >
+
+    <TextView
+        android:id="@+id/textItemProto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/control_vertical_margin"
+        android:layout_marginLeft="@dimen/control_horizontal_margin"
+        android:layout_marginRight="@dimen/control_horizontal_margin"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@drawable/item_color_selector" />
+
+    <ImageView
+        android:id="@+id/imageMark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/control_vertical_margin"
+        android:layout_marginRight="@dimen/control_horizontal_margin"
+        android:src="@drawable/item_image_selector" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/ActionLineColor" />
+
+</RelativeLayout>

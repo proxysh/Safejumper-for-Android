@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ ~ Copyleft (/c) MMXV, Proxy.sh
+ ~ Distributed under the GNU GPL v2
+  -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <solid android:color="#d8ddde" >
+    </solid>
+
+    <stroke
+        android:width="0dp"
+        android:color="@android:color/white" >
+    </stroke>
+
+    <corners
+        android:bottomLeftRadius="5dip"
+        android:bottomRightRadius="5dip"
+        android:topLeftRadius="5dip"
+        android:topRightRadius="5dip" >
+    </corners>
+
+</shape>
