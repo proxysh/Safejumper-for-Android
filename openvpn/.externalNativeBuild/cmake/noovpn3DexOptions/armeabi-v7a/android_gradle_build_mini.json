@@ -1,0 +1,64 @@
+{
+  "buildFiles": [
+    "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a --target clean"
+  ],
+  "libraries": {
+    "lzo-Release-armeabi-v7a": {
+      "artifactName": "lzo",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a --target lzo",
+      "abi": "armeabi-v7a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a/liblzo.a"
+    },
+    "nopie_openvpn.armeabi-v7a-Release-armeabi-v7a": {
+      "artifactName": "nopie_openvpn.armeabi-v7a",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a --target nopie_openvpn.armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a/nopie_openvpn.armeabi-v7a"
+    },
+    "ssl-Release-armeabi-v7a": {
+      "artifactName": "ssl",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a --target ssl",
+      "abi": "armeabi-v7a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a/libssl.a"
+    },
+    "opvpnutil-Release-armeabi-v7a": {
+      "artifactName": "opvpnutil",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a --target opvpnutil",
+      "abi": "armeabi-v7a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/build/intermediates/cmake/noovpn3/dexOptions/obj/armeabi-v7a/libopvpnutil.so"
+    },
+    "pie_openvpn.armeabi-v7a-Release-armeabi-v7a": {
+      "artifactName": "pie_openvpn.armeabi-v7a",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a --target pie_openvpn.armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a/pie_openvpn.armeabi-v7a"
+    },
+    "lz4-Release-armeabi-v7a": {
+      "artifactName": "lz4",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a --target lz4",
+      "abi": "armeabi-v7a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a/liblz4.a"
+    },
+    "jbcrypto-Release-armeabi-v7a": {
+      "artifactName": "jbcrypto",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a --target jbcrypto",
+      "abi": "armeabi-v7a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/build/intermediates/cmake/noovpn3/dexOptions/obj/armeabi-v7a/libjbcrypto.so"
+    },
+    "openvpn-Release-armeabi-v7a": {
+      "artifactName": "openvpn",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a --target openvpn",
+      "abi": "armeabi-v7a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/build/intermediates/cmake/noovpn3/dexOptions/obj/armeabi-v7a/libopenvpn.so"
+    },
+    "crypto-Release-armeabi-v7a": {
+      "artifactName": "crypto",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a --target crypto",
+      "abi": "armeabi-v7a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/armeabi-v7a/libcrypto.a"
+    }
+  }
+}

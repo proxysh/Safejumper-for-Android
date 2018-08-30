@@ -1,0 +1,66 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v21/values-v21.xml",
+            "map": [
+                {
+                    "source": "/Users/mgrabyk/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/ff11efea9e6e3816cd4547b05f0f11aa/res/values-v21/values-v21.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,159,223,290,354,470,596,722,850,1022",
+                        "endLines": "2,3,4,5,6,7,8,9,12,17",
+                        "endColumns": "103,63,66,63,115,125,125,127,12,12",
+                        "endOffsets": "154,218,285,349,465,591,717,845,1017,1355"
+                    },
+                    "to": {
+                        "startLines": "2,4,5,6,25,26,33,37,41,44",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,203,267,334,1842,1958,2415,2709,3004,3176",
+                        "endLines": "2,4,5,6,25,26,33,37,43,48",
+                        "endColumns": "103,63,66,63,115,125,125,127,12,12",
+                        "endOffsets": "154,262,329,393,1953,2079,2536,2832,3171,3509"
+                    }
+                },
+                {
+                    "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/values-v21/values-v21.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,26,32",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,99,179,266,360,449,531,609,694,768,847,933,1009,1089,1164,1241,1322,1397,1466,1543,1844,2223",
+                        "endLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,25,31,37",
+                        "endColumns": "43,79,86,93,88,81,77,84,73,78,85,75,79,74,76,80,74,68,76,12,12,12",
+                        "endOffsets": "94,174,261,355,444,526,604,689,763,842,928,1004,1084,1159,1236,1317,1392,1461,1538,1839,2218,2587"
+                    },
+                    "to": {
+                        "startLines": "3,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,49,54,60",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "159,398,478,565,659,748,830,908,993,1067,1146,1232,1308,1388,1463,1540,1621,1696,1765,3514,3815,4194",
+                        "endLines": "3,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,53,59,65",
+                        "endColumns": "43,79,86,93,88,81,77,84,73,78,85,75,79,74,76,80,74,68,76,12,12,12",
+                        "endOffsets": "198,473,560,654,743,825,903,988,1062,1141,1227,1303,1383,1458,1535,1616,1691,1760,1837,3810,4189,4558"
+                    }
+                },
+                {
+                    "source": "/Users/mgrabyk/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/1b9ce3622c2696dcb747cae99a3a338b/res/values-v21/values-v21.xml",
+                    "from": {
+                        "startLines": "2,5,8,11",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,223,386,554",
+                        "endLines": "4,7,10,13",
+                        "endColumns": "12,12,12,12",
+                        "endOffsets": "218,381,549,716"
+                    },
+                    "to": {
+                        "startLines": "27,30,34,38",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "2084,2252,2541,2837",
+                        "endLines": "29,32,36,40",
+                        "endColumns": "12,12,12,12",
+                        "endOffsets": "2247,2410,2704,2999"
+                    }
+                }
+            ]
+        }
+    ]
+}

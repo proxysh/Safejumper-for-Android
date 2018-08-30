@@ -4,17 +4,6 @@
  */
 package com.proxysh.safejumper;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.List;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -50,17 +39,29 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.proxy.sh.safejumper.R;
 import com.proxysh.safejumper.openvpn.ConfigManager;
 import com.proxysh.safejumper.service.IPChecker;
-import com.proxy.sh.safejumper.R;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.List;
 
 import de.blinkt.openvpn.VpnProfile;
-import de.blinkt.openvpn.activities.MainActivity;
 import de.blinkt.openvpn.api.ExternalOpenVPNService;
 import de.blinkt.openvpn.api.IOpenVPNAPIService;
 import de.blinkt.openvpn.api.IOpenVPNStatusCallback;
 import de.blinkt.openvpn.core.ConfigParser;
 import de.blinkt.openvpn.core.Connection;
+import de.blinkt.openvpn.core.ConnectionStatus;
+import de.blinkt.openvpn.core.LogItem;
 import de.blinkt.openvpn.core.OpenVPNService;
 import de.blinkt.openvpn.core.OpenVPNService.LocalBinder;
 import de.blinkt.openvpn.core.OpenVpnManagementThread;
@@ -68,10 +69,9 @@ import de.blinkt.openvpn.core.ProfileManager;
 import de.blinkt.openvpn.core.VPNLaunchHelper;
 import de.blinkt.openvpn.core.VpnStatus;
 import de.blinkt.openvpn.core.VpnStatus.ByteCountListener;
-import de.blinkt.openvpn.core.VpnStatus.ConnectionStatus;
-import de.blinkt.openvpn.core.VpnStatus.LogItem;
 import de.blinkt.openvpn.core.VpnStatus.LogListener;
 import de.blinkt.openvpn.core.VpnStatus.StateListener;
+
 
 
 public class AppActivity extends Activity implements OnClickListener, StateListener, ByteCountListener, LogListener  {
@@ -716,6 +716,12 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
 		}
 		lastState = currentStatus;
 	}
+
+	//TODO remove
+	@Override public void setConnectedVPN(String uuid) {
+
+	}
+
 	@Override
 	public void newLog(final LogItem logItem) {
 		Log.d("OpenVPN",logItem.getString(AppActivity.this));
@@ -961,6 +967,7 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
             else {
                 Intent intent = new Intent(AppActivity.this, OpenVPNService.class);
                 intent.setAction(OpenVPNService.START_SERVICE);
+
                 bindService(intent, vpnServiceConn, Context.BIND_AUTO_CREATE);
             }
         }
@@ -1035,10 +1042,12 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
             if(state == ServiceSwitcherStatus.LAUNCHING) {
                 startVPN1();
             }
-            if(!mUseAidlService) {
-				vpnService.setConfigurationIntent(getPendingIntent());
-				vpnService.setNotificationIntent(getPendingIntent());
-            }
+
+            //TODO uncomment
+//            if(!mUseAidlService) {
+//				vpnService.setConfigurationIntent(getPendingIntent());
+//				vpnService.setNotificationIntent(getPendingIntent());
+//            }
 
         }
 
@@ -1123,7 +1132,9 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
             }
             else {
                 if (vpnService != null && vpnService.getManagement() != null)
-                    vpnService.getManagement().stopVPN();
+					//TODO uncomment
+//                    vpnService.getManagement().stopVPN();
+                    vpnService.getManagement().stopVPN(true);
                 stopService(new Intent(AppActivity.this, OpenVPNService.class));
                 cancelNotification();
             }
@@ -1212,7 +1223,8 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
             try {
                 PackageInfo pinfo = getPackageManager().getPackageInfo("de.blinkt.openvpn", 0);
                 if(pinfo != null) {
-                    isIcsOpenVpnPresentNewer = ExternalOpenVPNService.VERSION_CODE < pinfo.versionCode;
+					//TODO uncomment
+//                    isIcsOpenVpnPresentNewer = ExternalOpenVPNService.VERSION_CODE < pinfo.versionCode;
                 }
                 isIcsOpenVpnPresent = true;
             } catch (PackageManager.NameNotFoundException e) {
@@ -1245,7 +1257,9 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
                 Log.e(TAG, "checkProfile failed: "+getString(vpnok));
                 return;
             }
-            final String profileStr = mActiveVpnProfile.getConfigFile(AppActivity.this, false, true);
+			//TODO uncomment
+            final String profileStr = mActiveVpnProfile.getConfigFile(AppActivity.this, false);
+//            final String profileStr = mActiveVpnProfile.getConfigFile(AppActivity.this, false, true);
 
             HashMap<String, Object> serverInfo = IPChecker.getInstance(AppActivity.this).serverForVpnByIp(mActiveVpnProfile.mServerName);
             final String location = (String) serverInfo.get(IPChecker.TAG_LOCATION);
@@ -1300,7 +1314,9 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
             if(!mUseAidlService) {
                 if (requestCode == START_VPN_CMD) {
                     if (resultCode == Activity.RESULT_OK) {
-                        int needpw = mActiveVpnProfile.needUserPWInput(false);
+						//TODO uncomment
+//                        int needpw = mActiveVpnProfile.needUserPWInput(false);
+                        int needpw = 0;
                         if (needpw != 0) {
                             VpnStatus.updateStateString("USER_VPN_PASSWORD", "", R.string.state_user_vpn_password,
                                     ConnectionStatus.LEVEL_AUTH_FAILED);
@@ -1333,9 +1349,10 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
         public void cancelNotification() {
             // remove status bar notifications for local service only
             if(!mUseAidlService && vpnService!=null) {
-				vpnService.setConfigurationIntent(null);
-				vpnService.setNotificationIntent(null);
-                vpnService.cancelNotification();
+				//TODO uncomment
+//				vpnService.setConfigurationIntent(null);
+//				vpnService.setNotificationIntent(null);
+//                vpnService.cancelNotification();
             }
         }
 
@@ -1347,7 +1364,9 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
                     Log.e(TAG, "checkProfile failed: "+getString(vpnok));
                     return;
                 }
-                String ss = profile.getConfigFile(AppActivity.this, false, true);
+				//TODO uncomment
+                String ss = profile.getConfigFile(AppActivity.this, false);
+//                String ss = profile.getConfigFile(AppActivity.this, false, true);
                 mAidlService.startVPN(ss);
             } catch (RemoteException e) {
                 e.printStackTrace();

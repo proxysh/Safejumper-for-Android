@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="action_button_drawing_padding">8dp</dimen>
+    <dimen name="action_button_margin_right">40dp</dimen>
+    <dimen name="activity_horizontal_margin">10dp</dimen>
+    <dimen name="activity_vertical_margin">10dp</dimen>
+    <dimen name="checkbox_padding">12dp</dimen>
+    <dimen name="control_horizontal_margin">32dp</dimen>
+    <dimen name="control_vertical_margin">24dp</dimen>
+    <dimen name="editor_horizontal_margin">16dp</dimen>
+    <dimen name="editor_interval_margin">24dp</dimen>
+    <dimen name="headline_horizontal_margin">12dp</dimen>
+    <dimen name="headline_vertical_margin">24dp</dimen>
+    <dimen name="item_height">44dp</dimen>
+    <dimen name="logo_vertical_margin">120dp</dimen>
+    <dimen name="predefined_bottom_margin">150dp</dimen>
+</resources>

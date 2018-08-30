@@ -5,30 +5,38 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.proxy.sh.safejumper"
         minSdkVersion 14
         targetSdkVersion 21
+
+
     }
 
     buildTypes {
+        debug {
+
+        }
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+
         }
     }
 
-    productFlavors{
-        normal
+    useLibrary 'org.apache.http.legacy'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:21.0.3'
-    //    compile files('../ics-openvpn/main')
-    compile project(':main')
-//    normalCompile project(path: ':main', configuration: 'normalDebug')
+    implementation 'com.android.support:support-v4:27.1.1'
+    debugImplementation project(path: ':openvpn')
+    releaseImplementation project(path: ':openvpn')
 }
+
+

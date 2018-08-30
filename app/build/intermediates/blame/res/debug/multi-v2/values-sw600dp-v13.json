@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
+            "map": [
+                {
+                    "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,108",
+                        "endColumns": "52,41",
+                        "endOffsets": "103,145"
+                    },
+                    "to": {
+                        "startLines": "2,17",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,873",
+                        "endColumns": "52,41",
+                        "endOffsets": "103,910"
+                    }
+                },
+                {
+                    "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/values-sw600dp/dimens.xml",
+                    "from": {
+                        "startLines": "10,11,8,9,12,19,18,14,13,17,16,21,15,20",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,1,4,4",
+                        "startOffsets": "329,390,215,273,449,835,779,553,498,720,663,947,610,893",
+                        "endColumns": "59,57,56,54,47,56,54,55,53,57,55,39,51,55",
+                        "endOffsets": "384,443,267,323,492,887,829,604,547,773,714,985,657,944"
+                    },
+                    "to": {
+                        "startLines": "3,4,5,6,7,8,9,10,11,12,13,14,15,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "108,168,226,283,338,386,443,498,554,608,666,722,765,817",
+                        "endColumns": "59,57,56,54,47,56,54,55,53,57,55,42,51,55",
+                        "endOffsets": "163,221,278,333,381,438,493,549,603,661,717,760,812,868"
+                    }
+                }
+            ]
+        }
+    ]
+}

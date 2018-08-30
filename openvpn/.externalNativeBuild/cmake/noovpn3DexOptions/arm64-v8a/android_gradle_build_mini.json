@@ -1,0 +1,64 @@
+{
+  "buildFiles": [
+    "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a --target clean"
+  ],
+  "libraries": {
+    "openvpn-Release-arm64-v8a": {
+      "artifactName": "openvpn",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a --target openvpn",
+      "abi": "arm64-v8a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/build/intermediates/cmake/noovpn3/dexOptions/obj/arm64-v8a/libopenvpn.so"
+    },
+    "jbcrypto-Release-arm64-v8a": {
+      "artifactName": "jbcrypto",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a --target jbcrypto",
+      "abi": "arm64-v8a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/build/intermediates/cmake/noovpn3/dexOptions/obj/arm64-v8a/libjbcrypto.so"
+    },
+    "ssl-Release-arm64-v8a": {
+      "artifactName": "ssl",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a --target ssl",
+      "abi": "arm64-v8a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a/libssl.a"
+    },
+    "crypto-Release-arm64-v8a": {
+      "artifactName": "crypto",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a --target crypto",
+      "abi": "arm64-v8a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a/libcrypto.a"
+    },
+    "lz4-Release-arm64-v8a": {
+      "artifactName": "lz4",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a --target lz4",
+      "abi": "arm64-v8a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a/liblz4.a"
+    },
+    "lzo-Release-arm64-v8a": {
+      "artifactName": "lzo",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a --target lzo",
+      "abi": "arm64-v8a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a/liblzo.a"
+    },
+    "pie_openvpn.arm64-v8a-Release-arm64-v8a": {
+      "artifactName": "pie_openvpn.arm64-v8a",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a --target pie_openvpn.arm64-v8a",
+      "abi": "arm64-v8a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a/pie_openvpn.arm64-v8a"
+    },
+    "opvpnutil-Release-arm64-v8a": {
+      "artifactName": "opvpnutil",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a --target opvpnutil",
+      "abi": "arm64-v8a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/build/intermediates/cmake/noovpn3/dexOptions/obj/arm64-v8a/libopvpnutil.so"
+    },
+    "nopie_openvpn.arm64-v8a-Release-arm64-v8a": {
+      "artifactName": "nopie_openvpn.arm64-v8a",
+      "buildCommand": "/Users/itsvekus/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a --target nopie_openvpn.arm64-v8a",
+      "abi": "arm64-v8a",
+      "output": "/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3DexOptions/arm64-v8a/nopie_openvpn.arm64-v8a"
+    }
+  }
+}

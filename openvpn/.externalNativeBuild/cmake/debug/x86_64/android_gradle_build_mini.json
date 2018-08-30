@@ -1,0 +1,91 @@
+{
+  "buildFiles": [
+    "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/src/main/cpp/CMakeLists.txt",
+    "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/src/main/cpp/mbedtls/CMakeLists.txt",
+    "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/src/main/cpp/mbedtls/library/CMakeLists.txt",
+    "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/src/main/cpp/mbedtls/include/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target clean"
+  ],
+  "libraries": {
+    "nopie_openvpn.x86_64-Debug-x86_64": {
+      "artifactName": "nopie_openvpn.x86_64",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target nopie_openvpn.x86_64",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64/nopie_openvpn.x86_64"
+    },
+    "pie_openvpn.x86_64-Debug-x86_64": {
+      "artifactName": "pie_openvpn.x86_64",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target pie_openvpn.x86_64",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64/pie_openvpn.x86_64"
+    },
+    "openvpn-Debug-x86_64": {
+      "artifactName": "openvpn",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target openvpn",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/cmake/debug/obj/x86_64/libopenvpn.so"
+    },
+    "crypto-Debug-x86_64": {
+      "artifactName": "crypto",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target crypto",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64/libcrypto.a"
+    },
+    "jbcrypto-Debug-x86_64": {
+      "artifactName": "jbcrypto",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target jbcrypto",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/cmake/debug/obj/x86_64/libjbcrypto.so"
+    },
+    "ssl-Debug-x86_64": {
+      "artifactName": "ssl",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target ssl",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64/libssl.a"
+    },
+    "lz4-Debug-x86_64": {
+      "artifactName": "lz4",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target lz4",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64/liblz4.a"
+    },
+    "mbedx509-Debug-x86_64": {
+      "artifactName": "mbedx509",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target mbedx509",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64/mbedtls/library/libmbedx509.a"
+    },
+    "lzo-Debug-x86_64": {
+      "artifactName": "lzo",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target lzo",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64/liblzo.a"
+    },
+    "mbedcrypto-Debug-x86_64": {
+      "artifactName": "mbedcrypto",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target mbedcrypto",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64/mbedtls/library/libmbedcrypto.a"
+    },
+    "ovpn3-Debug-x86_64": {
+      "artifactName": "ovpn3",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target ovpn3",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/cmake/debug/obj/x86_64/libovpn3.so"
+    },
+    "mbedtls-Debug-x86_64": {
+      "artifactName": "mbedtls",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target mbedtls",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64/mbedtls/library/libmbedtls.a"
+    },
+    "opvpnutil-Debug-x86_64": {
+      "artifactName": "opvpnutil",
+      "buildCommand": "/Users/mgrabyk/Library/Android/sdk/cmake/3.6.4111459/bin/cmake --build /Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/.externalNativeBuild/cmake/debug/x86_64 --target opvpnutil",
+      "abi": "x86_64",
+      "output": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/cmake/debug/obj/x86_64/libopvpnutil.so"
+    }
+  }
+}

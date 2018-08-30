@@ -1,0 +1,12 @@
+/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3Staging/x86_64/CMakeFiles/rebuild_cache.dir
+/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3Staging/x86_64/CMakeFiles/makeassetdir.dir
+/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3Staging/x86_64/CMakeFiles/lz4.dir
+/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3Staging/x86_64/CMakeFiles/nopie_openvpn.x86_64.dir
+/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3Staging/x86_64/CMakeFiles/pie_openvpn.x86_64.dir
+/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3Staging/x86_64/CMakeFiles/openvpn.dir
+/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3Staging/x86_64/CMakeFiles/jbcrypto.dir
+/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3Staging/x86_64/CMakeFiles/edit_cache.dir
+/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3Staging/x86_64/CMakeFiles/crypto.dir
+/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3Staging/x86_64/CMakeFiles/opvpnutil.dir
+/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3Staging/x86_64/CMakeFiles/ssl.dir
+/Users/itsvekus/Downloads/Safejumper-for-Android-master/openvpn/.externalNativeBuild/cmake/noovpn3Staging/x86_64/CMakeFiles/lzo.dir

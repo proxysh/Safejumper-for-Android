@@ -214,7 +214,9 @@ public class ConfigManager {
         try {
             PackageInfo pinfo = context.getPackageManager().getPackageInfo("de.blinkt.openvpn", 0);
             if(pinfo != null) {
-                return ExternalOpenVPNService.VERSION_CODE < pinfo.versionCode;
+				//TODO uncomment
+//                return ExternalOpenVPNService.VERSION_CODE < pinfo.versionCode;
+                return true;
             }
         } catch (PackageManager.NameNotFoundException e) {
             Log.i("ConfigManager","ics-openvpn not found");
