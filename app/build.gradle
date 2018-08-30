@@ -29,6 +29,6 @@ android {
 dependencies {
     compile 'com.android.support:support-v4:21.0.3'
     //    compile files('../ics-openvpn/main')
-//    compile project(':main')
-    normalCompile project(path: ':main', configuration: 'normalDebug')
+    compile project(':main')
+//    normalCompile project(path: ':main', configuration: 'normalDebug')
 }
