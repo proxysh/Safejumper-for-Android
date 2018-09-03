@@ -100,10 +100,10 @@ public class IPChecker {
                                         c.appLog("List of servers was obtained and validated. Server of list contains "
                                                 + serverList.size() + " elements.");
                                         mustUseOvpnTemplate = downloadOvpnTemplate();
-                                        callback.signInFinished(true);
                                     } else {
                                         c.appLog("Failed to get the list of server. Most likely the problem of response parsing. Please check your version.");
                                     }
+                                    callback.signInFinished(true);
                                 } else if (authResponse != null && authResponse.getErrorMsg() != null) {
                                     callback.signInFinished(false);
                                 }

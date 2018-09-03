@@ -5,11 +5,7 @@
 package com.proxysh.safejumper;
 
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.os.AsyncTask;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -18,12 +14,9 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
+import com.proxy.sh.safejumper.R;
 import com.proxysh.safejumper.openvpn.ConfigManager;
 import com.proxysh.safejumper.service.IPChecker;
-
-import com.proxy.sh.safejumper.R;
-
-import de.blinkt.openvpn.api.ConfirmDialog;
 
 public class SettingsAction implements OnCheckedChangeListener, OnClickListener, SignInCallbackInterface {
 
@@ -40,13 +33,12 @@ public class SettingsAction implements OnCheckedChangeListener, OnClickListener,
             checkAutoLaunch,
             checkAutoReconnect,
             checkSwithoffRoaming,
-            checkDisablePing,
             checkAllDisplay,
             checkKillInternet;
     private Button buttonLogout, buttonExport;
     private TextView textCurrentuser;
     private TextView textCurrentLocation;
-    private TextView textLoad, textIp, textPingTime, textPort;
+    private TextView textLoad, textIp, textPort;
     private TextView textInBytes, textOutBytes;
     private TextView textState;
 
@@ -61,7 +53,6 @@ public class SettingsAction implements OnCheckedChangeListener, OnClickListener,
         checkAutoLaunch = (CheckBox) v.findViewById(R.id.checkAutoLaunch);
         checkAutoReconnect = (CheckBox) v.findViewById(R.id.checkAutoReconnect);
         checkSwithoffRoaming = (CheckBox) v.findViewById(R.id.checkSwithoffRoaming);
-        checkDisablePing = (CheckBox) v.findViewById(R.id.checkDisablePing);
         checkAllDisplay = (CheckBox) v.findViewById(R.id.checkAllDisplay);
         checkKillInternet = (CheckBox) v.findViewById(R.id.checkKillInternet);
 
@@ -72,7 +63,6 @@ public class SettingsAction implements OnCheckedChangeListener, OnClickListener,
         textCurrentLocation = (TextView) v.findViewById(R.id.textCurrentLocation);
         textLoad = (TextView) v.findViewById(R.id.textLoad);
         textIp = (TextView) v.findViewById(R.id.textIp);
-        textPingTime = (TextView) v.findViewById(R.id.textPingTime);
         textPort = (TextView) v.findViewById(R.id.textPort);
         textInBytes = (TextView) v.findViewById(R.id.textInBytes);
         textOutBytes = (TextView) v.findViewById(R.id.textOutBytes);
@@ -83,7 +73,6 @@ public class SettingsAction implements OnCheckedChangeListener, OnClickListener,
         checkAutoLaunch.setChecked(ConfigManager.autoLaunchOnBoot(owner));
         checkAutoReconnect.setChecked(ConfigManager.getInstance(owner).prefBoolForKey(ConfigManager.PK_DROP_RECONNECT));
         checkSwithoffRoaming.setChecked(ConfigManager.getInstance(owner).prefBoolForKey(ConfigManager.PK_SWITCHOFF_ROAMING));
-        checkDisablePing.setChecked(ConfigManager.getInstance(owner).prefBoolForKey(ConfigManager.PK_DISABLE_PING));
         checkAllDisplay.setChecked(ConfigManager.getInstance(owner).prefBoolForKey(ConfigManager.PK_ALL_DISPLAY));
         checkKillInternet.setChecked(ConfigManager.getInstance(owner).prefBoolForKey(ConfigManager.PK_KILL_INTERNET));
 
@@ -92,7 +81,6 @@ public class SettingsAction implements OnCheckedChangeListener, OnClickListener,
         checkAutoLaunch.setOnCheckedChangeListener(this);
         checkAutoReconnect.setOnCheckedChangeListener(this);
         checkSwithoffRoaming.setOnCheckedChangeListener(this);
-        checkDisablePing.setOnCheckedChangeListener(this);
         checkAllDisplay.setOnCheckedChangeListener(this);
         checkKillInternet.setOnCheckedChangeListener(this);
         buttonLogout.setOnClickListener(this);
@@ -101,20 +89,18 @@ public class SettingsAction implements OnCheckedChangeListener, OnClickListener,
     }
 
     public void refreshSetting() {
-        checkDisablePing.setChecked(ConfigManager.getInstance(owner).prefBoolForKey(ConfigManager.PK_DISABLE_PING));
         checkAutoLaunch.setChecked(ConfigManager.autoLaunchOnBoot(owner));
         checkAllDisplay.setChecked(ConfigManager.getInstance(owner).prefBoolForKey(ConfigManager.PK_ALL_DISPLAY));
 
         buttonExport.setVisibility(owner.isExternalOpenVPN() ? View.VISIBLE : View.GONE);
     }
 
-    public void setConnectionInfo(String loc, String ip, String proto, String load, int pings) {
+    public void setConnectionInfo(String loc, String ip, String proto, String load) {
 
         textCurrentLocation.setText(loc);
         textLoad.setText(load.isEmpty() ? "N/A" : load + " %");
         textIp.setText(ip);
         textPort.setText(proto);
-        textPingTime.setText(pings == -1 ? "TBD" : (pings + "ms"));
     }
 
     public void setConnectionState(int noteResourceId) {
@@ -207,14 +193,6 @@ public class SettingsAction implements OnCheckedChangeListener, OnClickListener,
             case R.id.checkSwithoffRoaming:
                 tag = ConfigManager.PK_SWITCHOFF_ROAMING;
                 break;
-            case R.id.checkDisablePing:
-                tag = ConfigManager.PK_DISABLE_PING;
-                if (checked == true) {
-                    owner.disablePing();
-                } else {
-                    owner.enablePing();
-                }
-                break;
             case R.id.checkKillInternet:
                 tag = ConfigManager.PK_KILL_INTERNET;
                 break;
@@ -225,19 +203,14 @@ public class SettingsAction implements OnCheckedChangeListener, OnClickListener,
                 checkAutoLaunch.setEnabled(false);
                 checkAutoReconnect.setEnabled(false);
                 checkSwithoffRoaming.setEnabled(false);
-                checkDisablePing.setEnabled(false);
                 checkAllDisplay.setEnabled(false);
 
-                if (dialog == null) {
+                if (dialog == null || !dialog.isShowing()) {
                     dialog = ProgressDialog.show(owner, "",
                             owner.getString(R.string.waiting_assist), true);
-                } else {
-                    if (!dialog.isShowing()) {
-                        dialog = ProgressDialog.show(owner, "",
-                                owner.getString(R.string.waiting_assist), true);
-                        IPChecker.getInstance(null).registerTo(ConfigManager.activeUserName,
-                                ConfigManager.activePasswdOfUser, checked, this);
-                    }
+                    IPChecker.getInstance(null).registerTo(ConfigManager.activeUserName,
+                            ConfigManager.activePasswdOfUser, checked, this);
+
                 }
 
                 break;
@@ -261,16 +234,17 @@ public class SettingsAction implements OnCheckedChangeListener, OnClickListener,
 
     @Override
     public void signInFinished(boolean signInStatus) {
-        dialog.dismiss();
-        buttonLogout.setEnabled(true);
-        checkAutoConnect.setEnabled(true);
-        checkAutoLaunch.setEnabled(true);
-        checkAutoReconnect.setEnabled(true);
-        checkSwithoffRoaming.setEnabled(true);
-        checkDisablePing.setEnabled(true);
-        checkAllDisplay.setEnabled(true);
-        if (signInStatus) {
-            owner.onUpdateLocation();
+        if (dialog != null && dialog.isShowing()) {
+            dialog.dismiss();
+            buttonLogout.setEnabled(true);
+            checkAutoConnect.setEnabled(true);
+            checkAutoLaunch.setEnabled(true);
+            checkAutoReconnect.setEnabled(true);
+            checkSwithoffRoaming.setEnabled(true);
+            checkAllDisplay.setEnabled(true);
+            if (signInStatus) {
+                owner.onUpdateLocation();
+            }
         }
     }
 }

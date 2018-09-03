@@ -136,7 +136,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/tableRow1"
+                android:id="@+id/tableRow2"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -144,35 +144,7 @@
                 android:layout_below="@+id/linearLayout1"
                 android:layout_marginRight="@dimen/control_horizontal_margin"
                 android:layout_marginTop="@dimen/control_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin" >
-
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/label_space"
-                    android:text="@string/ping"
-                    android:textColor="@color/StatePanelTextColor" />
-
-                <TextView
-                    android:id="@+id/textPingTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TBD"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textColor="@color/StatePanelTextColor"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/tableRow2"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/tableRow1"
-                android:layout_marginRight="@dimen/control_horizontal_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin" >
+                android:paddingBottom="@dimen/activity_vertical_margin">
 
                 <TextView
                     android:id="@+id/textView10"
@@ -224,7 +196,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/tableRow3"
+            android:layout_below="@+id/tableRow7"
             android:background="@color/ActionLineColor" />
 
         <LinearLayout
@@ -346,16 +318,6 @@
                 android:paddingLeft="@dimen/checkbox_padding"
                 android:text="@string/setting_option4"
                 android:visibility="gone"
-                android:textColor="@color/HintTextColor" />
-
-            <CheckBox
-                android:id="@+id/checkDisablePing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/control_vertical_margin"
-                android:button="@drawable/checkbox_selector"
-                android:paddingLeft="@dimen/checkbox_padding"
-                android:text="@string/setting_option6"
                 android:textColor="@color/HintTextColor" />
             
             <CheckBox

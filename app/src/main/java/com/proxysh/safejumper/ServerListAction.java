@@ -7,6 +7,7 @@ package com.proxysh.safejumper;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Vector;
 
 import android.content.Context;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import com.proxysh.safejumper.service.IPChecker;
 
 import com.proxy.sh.safejumper.R;
+import com.proxysh.safejumper.service.network.apimodel.ServerResponse;
 
 public class ServerListAction implements OnItemClickListener {
 
@@ -81,10 +83,10 @@ public class ServerListAction implements OnItemClickListener {
 	public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
 		// TODO Auto-generated method stub
 		listAdapter.setSelectItem(pos);
-		HashMap<String, Object> selectedServer;
+		ServerResponse selectedServer;
 		if (pos == 0)
 		{
-			selectedServer = IPChecker.getInstance(this.owner).bestServerForVpn();
+			selectedServer = IPChecker.getInstance(this.owner).randomServerForVpn();
 		} else
 		{
 			String sloc = listAdapter.locationIndexes.get(pos - 1);
@@ -98,7 +100,7 @@ public class ServerListAction implements OnItemClickListener {
 
 class LocationListAdapter extends BaseAdapter {
 
-	private Vector<HashMap<String, Object>> locations;
+	private List<ServerResponse> locations;
 	public Vector<String> locationIndexes;
 	public String activeLocation = null;
 	private int itemIndex = -1;
@@ -109,42 +111,38 @@ class LocationListAdapter extends BaseAdapter {
 		this.locations = IPChecker.getInstance(null).availableServerList();
 		this.locationIndexes= new Vector<String>();
 		for (int i = 0; i < this.locations.size(); i++) {
-			this.locationIndexes.add(this.locations.get(i).get(IPChecker.TAG_LOCATION).toString().trim());
+			this.locationIndexes.add(this.locations.get(i).getIsoCode().trim());
 		}
-		Collections.sort(this.locationIndexes, new Comparator<String>() {
+		Collections.sort(this.locationIndexes, (lhs, rhs) -> {
+            int range1 = lhs.lastIndexOf(" ");
+            int range2 = rhs.lastIndexOf(" ");
+            if (range1 == -1 || range2 == -1) {
+                return lhs.compareTo(rhs);
+            }
 
-			@Override
-			public int compare(String lhs, String rhs) {
-				int range1 = lhs.lastIndexOf(" ");
-				int range2 = rhs.lastIndexOf(" ");
-				if (range1 == -1 || range2 == -1) {
-					return lhs.compareTo(rhs);
-				}
+            try {
+                int num1 = Integer.valueOf(lhs.substring(range1 + 1));
+                int num2 = Integer.valueOf(rhs.substring(range2 + 1));
+                if (num1 == 0 || num2 == 0)
+                    throw new Exception();
 
-				try {
-					int num1 = Integer.valueOf(lhs.substring(range1 + 1));
-					int num2 = Integer.valueOf(rhs.substring(range2 + 1));
-					if (num1 == 0 || num2 == 0)
-						throw new Exception();
+                String pre1 = lhs.substring(0, range1);
+                String pre2 = rhs.substring(0, range2);
+                int c1 = pre1.compareTo(pre2);
+                if (c1 == 0) {
+                    if (num1 < num2)
+                        return -1;
+                    else if (num1 > num2)
+                        return 1;
 
-					String pre1 = lhs.substring(0, range1);
-					String pre2 = rhs.substring(0, range2);
-					int c = pre1.compareTo(pre2);
-					if (c == 0) {
-						if (num1 < num2)
-							return -1;
-						else if (num1 > num2)
-							return 1;
+                    return 0;
+                }
+                return c1;
 
-						return 0;
-					}
-					return c;
-
-				} catch (Exception e) {
-					return lhs.compareTo(rhs);
-				}
-			}
-		});
+            } catch (Exception e) {
+                return lhs.compareTo(rhs);
+            }
+        });
 
 	}
 
@@ -187,10 +185,9 @@ class LocationListAdapter extends BaseAdapter {
 			holder.textItemLocation.setText("* Fastest node");
 			holder.textItemLoad.setText("(lowest load & ping)");
 		} else {
-			HashMap<String, Object> serverInfo = IPChecker.getInstance(null).serverForVpnByLocation(this.locationIndexes.get(position - 1));
-			String location = serverInfo.get(IPChecker.TAG_LOCATION).toString();
-			Integer load = (Integer) serverInfo.get(IPChecker.TAG_SERVERLOAD);
-			Integer pings = (Integer) serverInfo.get(IPChecker.TAG_PING_TIME);
+			ServerResponse serverInfo = IPChecker.getInstance(null).serverForVpnByLocation(this.locationIndexes.get(position - 1));
+			String location = serverInfo.getIsoCode();
+			Integer load = Integer.parseInt(serverInfo.getServerLoad());
 //			int imageId = R.drawable.ic_item_go;
 //			int colorId = Color.BLACK;
 //			if (
@@ -205,7 +202,7 @@ class LocationListAdapter extends BaseAdapter {
 //			holder.textItemLocation.setTextColor(colorId);
 //			holder.textItemLoad.setTextColor(colorId);
 			holder.textItemLocation.setText(location);
-			holder.textItemLoad.setText("("+load.toString() + "%,  " + ((pings.intValue() == -1) ? "TBD": (pings.toString() + "ms")) + ")");
+			holder.textItemLoad.setText("("+load.toString() + "%" + ")");
 
 		}
 		return convertView;

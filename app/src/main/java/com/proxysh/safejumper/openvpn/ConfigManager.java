@@ -35,7 +35,6 @@ public class ConfigManager {
 	public static final String PK_AUTO_CONNECT = "autoConnect";
 	public static final String PK_DROP_RECONNECT = "reconnectDrop";
 	public static final String PK_SWITCHOFF_ROAMING = "switchOffRoaming";
-	public static final String PK_DISABLE_PING = "disablePing";
 	public static final String PK_ALL_DISPLAY = "allDisplay";
 	public static final String PK_KILL_INTERNET = "killInternet";
 	public static final String PK_SAVE_CREDENTIALS = "saveCredential";

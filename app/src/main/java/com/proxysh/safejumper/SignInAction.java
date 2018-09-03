@@ -31,7 +31,7 @@ public class SignInAction implements SignInCallbackInterface {
     private EditText editUsername;
     private EditText editpasswd;
     private Button buttonSignIn;
-    private CheckBox checkRememberMe, checkAutoLaunch, checkDisablePing, checkAllDisplay;
+    private CheckBox checkRememberMe, checkAutoLaunch, checkAllDisplay;
     private Spinner spnIcsOpenVpn;
     private ProgressDialog dialog = null;
 
@@ -48,7 +48,6 @@ public class SignInAction implements SignInCallbackInterface {
         buttonSignIn = (Button) v.findViewById(R.id.buttonSignIn);
         checkRememberMe = (CheckBox) v.findViewById(R.id.checkSaveMe);
         checkAutoLaunch = (CheckBox) v.findViewById(R.id.checkAutoLaunch);
-        checkDisablePing = (CheckBox) v.findViewById(R.id.checkDisablePing);
         checkAllDisplay = (CheckBox) v.findViewById(R.id.checkAllDisplay);
         spnIcsOpenVpn = (Spinner) v.findViewById(R.id.spnIcsOpenVpn);
 
@@ -80,15 +79,6 @@ public class SignInAction implements SignInCallbackInterface {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 //save to config
                 ConfigManager.setAutoLaunchOnBoot(owner, isChecked);
-            }
-        });
-
-        checkDisablePing.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                //save to config
-                configManager.setPrefBool(ConfigManager.PK_DISABLE_PING, isChecked);
             }
         });
 
@@ -143,13 +133,7 @@ public class SignInAction implements SignInCallbackInterface {
             }
         });
 
-        buttonSignIn.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                sigin();
-            }
-        });
+        buttonSignIn.setOnClickListener(v1 -> sigin());
 
         if (configManager.prefBoolForKey(ConfigManager.PK_AUTO_CONNECT)) {
             if (saveme) {
@@ -175,16 +159,12 @@ public class SignInAction implements SignInCallbackInterface {
 
     private void sigin() {
         if (isParamValidate()) {
-            if (dialog == null) {
+            if (dialog == null || !dialog.isShowing()) {
                 dialog = ProgressDialog.show(owner, "", owner.getString(R.string.waiting_assist), true);
-            } else {
-                if (!dialog.isShowing()) {
-                    dialog = ProgressDialog.show(owner, "", owner.getString(R.string.waiting_assist), true);
-                    buttonSignIn.setEnabled(false);
-                    IPChecker.getInstance(null).registerTo(editUsername.getText().toString(),
-                            editpasswd.getText().toString(), configManager.prefBoolForKey(ConfigManager.PK_ALL_DISPLAY),
-                            this);
-                }
+                buttonSignIn.setEnabled(false);
+                IPChecker.getInstance(null).registerTo(editUsername.getText().toString(),
+                        editpasswd.getText().toString(), configManager.prefBoolForKey(ConfigManager.PK_ALL_DISPLAY),
+                        this);
             }
 
         }
@@ -192,7 +172,7 @@ public class SignInAction implements SignInCallbackInterface {
 
     @Override
     public void signInFinished(boolean signInStatus) {
-        if (dialog != null && dialog.isShowing()){
+        if (dialog != null && dialog.isShowing()) {
             dialog.dismiss();
             buttonSignIn.setEnabled(true);
             if (!signInStatus) {
@@ -212,7 +192,6 @@ public class SignInAction implements SignInCallbackInterface {
 
     public void loadPredefinedOption() {
         checkAutoLaunch.setChecked(ConfigManager.autoLaunchOnBoot(owner));
-        checkDisablePing.setChecked(configManager.prefBoolForKey(ConfigManager.PK_DISABLE_PING));
         checkAllDisplay.setChecked(configManager.prefBoolForKey(ConfigManager.PK_ALL_DISPLAY));
         if (configManager.ifExternalOpenVpnInstalled()) {
             spnIcsOpenVpn.setSelection(configManager.prefIntForKey(ConfigManager.PK_ICS_OPENVPN));
