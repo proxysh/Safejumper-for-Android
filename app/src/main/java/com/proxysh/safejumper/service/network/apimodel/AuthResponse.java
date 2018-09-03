@@ -14,6 +14,10 @@ public class AuthResponse {
     @Expose
     private List<ServerResponse> servers;
 
+    @SerializedName("error")
+    @Expose
+    private String errorMsg;
+
     public AuthUserResponse getUser() {
         return user;
     }
@@ -28,5 +32,13 @@ public class AuthResponse {
 
     public void setServers(List<ServerResponse> servers) {
         this.servers = servers;
+    }
+
+    public String getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 }
