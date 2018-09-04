@@ -83,7 +83,7 @@ public class IPChecker {
     }
 
     public void registerTo(String username, String passwd, boolean enableAllLocation, SignInCallbackInterface callback) {
-        c.appLog("--------Fetching servers list----------");
+//        c.appLog("--------Fetching servers list----------");
         (new CompositeDisposable()).add(
                 ApiService.getInstance().getApiService().login(new AuthBody(username, passwd))
                         .observeOn(AndroidSchedulers.mainThread())

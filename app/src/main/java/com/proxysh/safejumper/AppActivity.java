@@ -560,7 +560,10 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
     }
 
     public void appLog(final String s) {
-        this.runOnUiThread(() -> actLogs.appLog(s));
+        this.runOnUiThread(() -> {
+                    actLogs.appLog(s);
+                }
+        );
     }
 
     @Override

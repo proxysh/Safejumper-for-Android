@@ -5,7 +5,7 @@
   -->
 <resources>
 
-    <string name="app_name">Safejumper</string>
+    <string name="app_name">Shieldtra</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="remember_me">Remember my details</string>
