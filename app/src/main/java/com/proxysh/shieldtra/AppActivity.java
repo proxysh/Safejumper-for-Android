@@ -23,6 +23,7 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.VpnService;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -55,11 +56,13 @@ import java.lang.reflect.Method;
 import java.util.List;
 
 import de.blinkt.openvpn.VpnProfile;
+import de.blinkt.openvpn.api.ExternalOpenVPNService;
 import de.blinkt.openvpn.api.IOpenVPNAPIService;
 import de.blinkt.openvpn.api.IOpenVPNStatusCallback;
 import de.blinkt.openvpn.core.ConfigParser;
 import de.blinkt.openvpn.core.Connection;
 import de.blinkt.openvpn.core.ConnectionStatus;
+import de.blinkt.openvpn.core.IOpenVPNServiceInternal;
 import de.blinkt.openvpn.core.LogItem;
 import de.blinkt.openvpn.core.OpenVPNService;
 import de.blinkt.openvpn.core.OpenVPNService.LocalBinder;
@@ -435,8 +438,9 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
 
         VpnProfile profile = defaultProfile();
 
-        profile.mUseUdp = protocol.equals("UDP") ? true : false;
+        profile.mUseUdp = protocol.contains("UDP");
         profile.mServerPort = port;
+        profile.mUseTLSAuth = true;
 
         profile.mUsername = ConfigManager.activeUserName;
         profile.mPassword = ConfigManager.activePasswdOfUser;
@@ -453,10 +457,10 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
     public void onSelectServer(ServerResponse server) {
 
         VpnProfile profile = defaultProfile();
-        profile.mServerName = server.getName();
+        profile.mServerName = server.getIp();
 
         if (tabBtnShieldtra.isSelected()) {
-            onSelectService("TCP", "443");
+            onSelectService("TCP", "8080");
         } else {
             switchView(viewProtos);
         }
@@ -485,7 +489,7 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
                 profile.mCaFilename = this.getCacheDir() + "/proxysh.crt";
 
             profile.mUseUdp = false;
-            profile.mServerPort = "443";
+            profile.mServerPort = "8080";
             profile.mServerName = "";
             ProfileManager.getInstance(this).addProfile(profile);
         }
@@ -559,7 +563,9 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
 
     public void appLog(final String s) {
         this.runOnUiThread(() -> {
-                    actLogs.appLog(s);
+                    if (actLogs != null) {
+                        actLogs.appLog(s);
+                    }
                 }
         );
     }
@@ -809,14 +815,10 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
         Log.i("start", "start time" + System.currentTimeMillis());
         activeVpnProfile = profile;
         mServiceSwitcher.startVPN(profile);
-        this.runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                actSettings.setConnectionInfo(location, profile.mServerName, proto, load);
-                actSettings.setConnectionState(R.string.ready_note);
-                actSettings.refreshSetting();
-            }
+        this.runOnUiThread(() -> {
+            actSettings.setConnectionInfo(location, profile.mServerName, proto, load);
+            actSettings.setConnectionState(R.string.ready_note);
+            actSettings.refreshSetting();
         });
         Log.i("end", "end time" + System.currentTimeMillis());
     }
@@ -988,16 +990,18 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
             }
         };
 
-        private OpenVPNService vpnService;
+        private IOpenVPNServiceInternal vpnService;
         private ServiceConnection vpnServiceConn = new ServiceConnection() {
 
             @Override
             public void onServiceConnected(ComponentName className,
                                            IBinder service) {
                 // We've bound to LocalService, cast the IBinder and get LocalService instance
-                LocalBinder binder = (LocalBinder) service;
-                vpnService = binder.getService();
+//                LocalBinder binder =  IOpenVPNServiceInternal.Stub.asInterface(service);
+                vpnService = IOpenVPNServiceInternal.Stub.asInterface(service);
+//                 binder.getService();
                 onServiceBind();
+
             }
 
             @Override
@@ -1014,10 +1018,10 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
             }
 
             //TODO uncomment
-//            if(!mUseAidlService) {
+            if(!mUseAidlService) {
 //				vpnService.setConfigurationIntent(getPendingIntent());
 //				vpnService.setNotificationIntent(getPendingIntent());
-//            }
+            }
 
         }
 
@@ -1100,10 +1104,14 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
                     Log.e(TAG, "stopVpn()", e);
                 }
             } else {
-                if (vpnService != null && vpnService.getManagement() != null)
-                    //TODO uncomment
-//                    vpnService.getManagement().stopVPN();
-                    vpnService.getManagement().stopVPN(true);
+                if (vpnService != null)
+                {
+                    try {
+                        vpnService.stopVPN(true);
+                    } catch (RemoteException e) {
+                        VpnStatus.logException(e);
+                    }
+                }
                 stopService(new Intent(AppActivity.this, OpenVPNService.class));
                 cancelNotification();
             }
@@ -1188,8 +1196,7 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
             try {
                 PackageInfo pinfo = getPackageManager().getPackageInfo("de.blinkt.openvpn", 0);
                 if (pinfo != null) {
-                    //TODO uncomment
-//                    isIcsOpenVpnPresentNewer = ExternalOpenVPNService.VERSION_CODE < pinfo.versionCode;
+                    isIcsOpenVpnPresentNewer = Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1 < pinfo.versionCode;
                 }
                 isIcsOpenVpnPresent = true;
             } catch (PackageManager.NameNotFoundException e) {
@@ -1222,9 +1229,7 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
                 Log.e(TAG, "checkProfile failed: " + getString(vpnok));
                 return;
             }
-            //TODO uncomment
             final String profileStr = mActiveVpnProfile.getConfigFile(AppActivity.this, false);
-//            final String profileStr = mActiveVpnProfile.getConfigFile(AppActivity.this, false, true);
 
             ServerResponse serverInfo = IPChecker.getInstance(AppActivity.this).serverForVpnByIp(mActiveVpnProfile.mServerName);
             final String location = (String) serverInfo.getIsoCode();
@@ -1243,22 +1248,16 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
             alertDialogBuilder
                     .setCancelable(false)
                     .setPositiveButton("OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    try {
-                                        boolean ok = mAidlService.addVPNProfile(userInput.getText().toString(), profileStr);
-                                        Toast.makeText(AppActivity.this, ok ? "Profile added to OpenVPN" : "Can't export profile", Toast.LENGTH_LONG).show();
-                                    } catch (RemoteException e) {
-                                        e.printStackTrace();
-                                    }
+                            (dialog, id) -> {
+                                try {
+                                    boolean ok = mAidlService.addVPNProfile(userInput.getText().toString(), profileStr);
+                                    Toast.makeText(AppActivity.this, ok ? "Profile added to OpenVPN" : "Can't export profile", Toast.LENGTH_LONG).show();
+                                } catch (RemoteException e) {
+                                    e.printStackTrace();
                                 }
                             })
                     .setNegativeButton("Cancel",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
+                            (dialog, id) -> dialog.cancel());
 
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.show();
@@ -1329,9 +1328,7 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
                     Log.e(TAG, "checkProfile failed: " + getString(vpnok));
                     return;
                 }
-                //TODO uncomment
                 String ss = profile.getConfigFile(AppActivity.this, false);
-//                String ss = profile.getConfigFile(AppActivity.this, false, true);
                 mAidlService.startVPN(ss);
             } catch (RemoteException e) {
                 e.printStackTrace();

@@ -83,7 +83,7 @@ public class IPChecker {
     }
 
     public void registerTo(String username, String passwd, boolean enableAllLocation, SignInCallbackInterface callback) {
-//        c.appLog("--------Fetching servers list----------");
+        c.appLog("--------Fetching servers list----------");
         (new CompositeDisposable()).add(
                 ApiService.getInstance().getApiService().login(new AuthBody(username, passwd))
                         .observeOn(AndroidSchedulers.mainThread())
@@ -220,7 +220,8 @@ public class IPChecker {
     }
 
     public ServerResponse randomServerForVpn() {
-        int index = ThreadLocalRandom.current().nextInt(0, serverList.size());
+//        int index = ThreadLocalRandom.current().nextInt(0, serverList.size());
+        int index = (int)(Math.random() * serverList.size());
         return serverList.get(index);
     }
 

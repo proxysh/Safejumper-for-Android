@@ -13,12 +13,14 @@ import java.util.Arrays;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+import de.blinkt.openvpn.api.ExternalOpenVPNService;
 import de.blinkt.openvpn.core.VpnStatus;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Base64;
 import android.util.Log;
@@ -89,17 +91,17 @@ public class ConfigManager {
 	public void setPrefBool(String key, boolean value) {
 		SharedPreferences.Editor editor = pref.edit();
 		editor.putBoolean(key, value);
-		editor.commit();
+		editor.apply();
 	}
 
 	public void setPrefString(String key, String value) {
 		SharedPreferences.Editor editor = pref.edit();
 		editor.putString(key, value);
-		editor.commit();
+		editor.apply();
 	}
 
     public void setPrefInt(String key, int value) {
-        pref.edit().putInt(key, value).commit();
+        pref.edit().putInt(key, value).apply();
     }
 
     public void setUserObject(String username, String passwd) {
@@ -108,7 +110,7 @@ public class ConfigManager {
 		SharedPreferences.Editor editor = users.edit();
 		String cipher = encrypt(passwd);
 		editor.putString(username, (cipher == null) ? "":cipher);
-		editor.commit();
+		editor.apply();
 	}
 
 	public String getUserObject(String usernmae) {
@@ -212,9 +214,7 @@ public class ConfigManager {
         try {
             PackageInfo pinfo = context.getPackageManager().getPackageInfo("de.blinkt.openvpn", 0);
             if(pinfo != null) {
-				//TODO uncomment
-//                return ExternalOpenVPNService.VERSION_CODE < pinfo.versionCode;
-                return true;
+                return Build.VERSION_CODES.ICE_CREAM_SANDWICH_MR1 < pinfo.versionCode;
             }
         } catch (PackageManager.NameNotFoundException e) {
             Log.i("ConfigManager","ics-openvpn not found");
