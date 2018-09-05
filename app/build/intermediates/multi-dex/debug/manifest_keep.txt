@@ -1,3 +1,0 @@
-# Referenced at /Users/itsvekus/Downloads/Safejumper-for-Android-master/app/build/intermediates/manifests/full/debug/AndroidManifest.xml:39
--keep class de.blinkt.openvpn.core.ICSOpenVPNApplication { <init>(...); }
-

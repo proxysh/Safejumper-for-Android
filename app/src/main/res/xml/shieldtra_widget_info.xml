@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ ~ Copyleft (/c) MMXV, Proxy.sh
+ ~ Distributed under the GNU GPL v2
+  -->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="72dp"
+    android:minHeight="72dp"
+    android:updatePeriodMillis="86400000"
+    android:initialLayout="@layout/widget_main"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen|keyguard"
+    android:initialKeyguardLayout="@layout/widget_main">
+</appwidget-provider>

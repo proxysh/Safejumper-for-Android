@@ -43,7 +43,7 @@
     
     <string name="getproxy_error">Error getting proxy settings: %s</string>
     <string name="minidump_generated">OpenVPN crashed unexpectedly. Please consider using the send Minidump option in the main menu</string>
-    <string name="notifcation_title">OpenVPN - Safejumper</string>
+    <string name="notifcation_title">OpenVPN - Shieldtra</string>
     <string name="notifcation_title_notconnect">Not connected</string>
     <string name="cancel_connection">Disconnect</string>
     <string name="pauseVPN">Pause VPN</string>
@@ -116,7 +116,7 @@
     <string name="setting_option6">Disable ping to save bandwidth</string>
     <string name="setting_option7">Display all individual node servers</string>
     <string name="setting_option8">Kill internet when vpn disconnects</string>
-    <string name="widget_name">Safejumper VPN</string>
+    <string name="widget_name">Shieldtra VPN</string>
     
     <string name="unhandled_exception">Unhandled exception: %1$s\n\n%2$s</string>
     <string name="unhandled_exception_context">%3$s: %1$s\n\n%2$s</string>

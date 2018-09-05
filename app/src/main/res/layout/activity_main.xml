@@ -51,10 +51,10 @@
                 android:background="@drawable/settings_button_selector" />
 
             <Button
-                android:id="@+id/tabBtnSafejump"
+                android:id="@+id/tabBtnShieldtra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/safejump_button_selector" />
+                android:background="@drawable/shieldtra_button_selector" />
 
             <Button
                 android:id="@+id/tabBtnLogs"

@@ -9,7 +9,7 @@ android {
     buildToolsVersion '27.0.3'
 
     defaultConfig {
-        applicationId "com.proxy.sh.safejumper"
+        applicationId "com.proxy.sh.shieldtra"
         minSdkVersion 14
         targetSdkVersion 21
 

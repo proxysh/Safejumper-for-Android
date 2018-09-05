@@ -22,11 +22,11 @@
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="@dimen/editor_interval_margin"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo_big" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"

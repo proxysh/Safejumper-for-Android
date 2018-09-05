@@ -56,10 +56,6 @@
         "source": "/Users/mgrabyk/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/ff11efea9e6e3816cd4547b05f0f11aa/res/drawable-mdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
-        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_safejump_normal.png.flat",
-        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-mdpi/ic_safejump_normal.png"
-    },
-    {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_connect_selected.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-mdpi/ic_connect_selected.png"
     },
@@ -148,10 +144,6 @@
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-xhdpi-v4/ic_add_circle_outline_white_24dp.png"
     },
     {
-        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_safejump_selected.png.flat",
-        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-xxhdpi/ic_safejump_selected.png"
-    },
-    {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_logs_selected.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-xhdpi/ic_logs_selected.png"
     },
@@ -162,6 +154,10 @@
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_ic_edit_white_24dp.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-xxhdpi-v4/ic_edit_white_24dp.png"
+    },
+    {
+        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable_logo_color.png.flat",
+        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable/logo_color.png"
     },
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-ldpi-v4_ic_shortcut_cancel.png.flat",
@@ -274,10 +270,6 @@
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_ic_filter_list_white_24dp.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-xhdpi-v4/ic_filter_list_white_24dp.png"
-    },
-    {
-        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_safejump_normal.png.flat",
-        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-xxhdpi/ic_safejump_normal.png"
     },
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable_white_rect.xml.flat",
@@ -468,6 +460,10 @@
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/layout/graph_item.xml"
     },
     {
+        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_shieldtra_normal.png.flat",
+        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-mdpi/ic_shieldtra_normal.png"
+    },
+    {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable_bg_rect_round.xml.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable/bg_rect_round.xml"
     },
@@ -500,6 +496,10 @@
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-mdpi-v4/ic_add_circle_outline_white_24dp.png"
     },
     {
+        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable_shieldtra_button_selector.xml.flat",
+        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable/shieldtra_button_selector.xml"
+    },
+    {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/layout_api_confirm.xml.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/layout/api_confirm.xml"
     },
@@ -514,6 +514,10 @@
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_go.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-mdpi/ic_go.png"
+    },
+    {
+        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_shieldtra_normal.png.flat",
+        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-xhdpi/ic_shieldtra_normal.png"
     },
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_ic_share_white_24dp.png.flat",
@@ -560,6 +564,10 @@
         "source": "/Users/mgrabyk/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/ff11efea9e6e3816cd4547b05f0f11aa/res/layout-v21/notification_action.xml"
     },
     {
+        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/xml_shieldtra_widget_info.xml.flat",
+        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/xml/shieldtra_widget_info.xml"
+    },
+    {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_ic_play_arrow_white_24dp.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-xxxhdpi-v4/ic_play_arrow_white_24dp.png"
     },
@@ -578,6 +586,10 @@
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_ic_stat_vpn_offline.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-xxhdpi-v4/ic_stat_vpn_offline.png"
+    },
+    {
+        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable_logo_big.png.flat",
+        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable/logo_big.png"
     },
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/layout_server_footer.xml.flat",
@@ -700,6 +712,10 @@
         "source": "/Users/mgrabyk/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/1b9ce3622c2696dcb747cae99a3a338b/res/layout/notification_template_media.xml"
     },
     {
+        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_shieldtra_selected.png.flat",
+        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-xxhdpi/ic_shieldtra_selected.png"
+    },
+    {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable_item_image_selector.xml.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable/item_image_selector.xml"
     },
@@ -750,6 +766,10 @@
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_ic_menu_copy_holo_dark.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-mdpi-v4/ic_menu_copy_holo_dark.png"
+    },
+    {
+        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_shieldtra_selected.png.flat",
+        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-hdpi/ic_shieldtra_selected.png"
     },
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/layout_notification_template_big_media_custom.xml.flat",
@@ -868,10 +888,6 @@
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-hdpi/ic_applicationlog_normal.png"
     },
     {
-        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/xml_safejumper_widget_info.xml.flat",
-        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/xml/safejumper_widget_info.xml"
-    },
-    {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_ic_archive_white_24dp.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-mdpi-v4/ic_archive_white_24dp.png"
     },
@@ -902,6 +918,10 @@
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/layout_share_fab.xml.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/layout/share_fab.xml"
+    },
+    {
+        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_shieldtra_normal.png.flat",
+        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-hdpi/ic_shieldtra_normal.png"
     },
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_ic_quick.png.flat",
@@ -1084,10 +1104,6 @@
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-xxhdpi-v4/ic_quick.png"
     },
     {
-        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_safejump_normal.png.flat",
-        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-xhdpi/ic_safejump_normal.png"
-    },
-    {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/xml_vpn_ipsettings.xml.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/xml/vpn_ipsettings.xml"
     },
@@ -1126,10 +1142,6 @@
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_username.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-hdpi/ic_username.png"
-    },
-    {
-        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_safejump_selected.png.flat",
-        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-hdpi/ic_safejump_selected.png"
     },
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_panel_normal.png.flat",
@@ -1240,6 +1252,10 @@
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-xhdpi/ic_item_go_active.png"
     },
     {
+        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_shieldtra_normal.png.flat",
+        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-xxhdpi/ic_shieldtra_normal.png"
+    },
+    {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/layout_notification_template_icon_group.xml.flat",
         "source": "/Users/mgrabyk/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/ff11efea9e6e3816cd4547b05f0f11aa/res/layout/notification_template_icon_group.xml"
     },
@@ -1300,6 +1316,10 @@
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-xhdpi/logo.png"
     },
     {
+        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_shieldtra_selected.png.flat",
+        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-mdpi/ic_shieldtra_selected.png"
+    },
+    {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_ic_shortcut_cancel.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-xxhdpi-v4/ic_shortcut_cancel.png"
     },
@@ -1336,8 +1356,8 @@
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-xxhdpi/ic_go.png"
     },
     {
-        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_safejump_selected.png.flat",
-        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-xhdpi/ic_safejump_selected.png"
+        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_shieldtra_selected.png.flat",
+        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-xhdpi/ic_shieldtra_selected.png"
     },
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi_logo.png.flat",
@@ -1430,10 +1450,6 @@
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_ic_content_copy_white_24dp.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-xxxhdpi-v4/ic_content_copy_white_24dp.png"
-    },
-    {
-        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_safejump_normal.png.flat",
-        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-hdpi/ic_safejump_normal.png"
     },
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_ic_stat_vpn_outline.png.flat",
@@ -1564,10 +1580,6 @@
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/layout/connections.xml"
     },
     {
-        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable_safejump_button_selector.xml.flat",
-        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable/safejump_button_selector.xml"
-    },
-    {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_ic_shortcut_cancel.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-xxxhdpi-v4/ic_shortcut_cancel.png"
     },
@@ -1590,10 +1602,6 @@
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_ic_filter_list_white_24dp.png.flat",
         "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/openvpn/build/intermediates/packaged_res/debug/drawable-mdpi-v4/ic_filter_list_white_24dp.png"
-    },
-    {
-        "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_safejump_selected.png.flat",
-        "source": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/src/main/res/drawable-mdpi/ic_safejump_selected.png"
     },
     {
         "merged": "/Users/mgrabyk/AndroidStudioProjects/safejumper-android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_ic_shortcut_cancel.png.flat",
