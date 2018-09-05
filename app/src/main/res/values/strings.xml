@@ -113,7 +113,6 @@
     <string name="private_key_password">Private Key Password</string>
     <string name="error_rsa_sign">Error signing with Android keystore key %1$s: %2$s</string>
     <string name="predefined_options">Predefined options</string>
-    <string name="setting_option6">Disable ping to save bandwidth</string>
     <string name="setting_option7">Display all individual node servers</string>
     <string name="setting_option8">Kill internet when vpn disconnects</string>
     <string name="widget_name">Shieldtra VPN</string>

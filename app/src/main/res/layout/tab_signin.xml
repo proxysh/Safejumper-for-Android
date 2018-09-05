@@ -149,23 +149,11 @@
                 android:textColorHint="@color/HintTextColor" />
 
             <CheckBox
-                android:id="@+id/checkDisablePing"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignLeft="@+id/checkAutoLaunch"
-                android:layout_below="@+id/checkAutoLaunch"
-                android:layout_marginBottom="@dimen/control_vertical_margin"
-                android:button="@drawable/checkbox_selector"
-                android:paddingLeft="@dimen/checkbox_padding"
-                android:text="@string/setting_option6"
-                android:textColor="@color/HintTextColor"
-                android:textColorHint="@color/HintTextColor" />
-            <CheckBox
                 android:id="@+id/checkAllDisplay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/checkAutoLaunch"
-                android:layout_below="@+id/checkDisablePing"
+                android:layout_below="@+id/checkAutoLaunch"
                 android:layout_marginBottom="@dimen/control_vertical_margin"
                 android:button="@drawable/checkbox_selector"
                 android:paddingLeft="@dimen/checkbox_padding"
