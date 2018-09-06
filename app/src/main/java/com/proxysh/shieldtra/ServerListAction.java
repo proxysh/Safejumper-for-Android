@@ -26,92 +26,92 @@ import com.proxysh.shieldtra.service.network.apimodel.ServerResponse;
 
 public class ServerListAction implements OnItemClickListener {
 
-	private ListView listLocation;
-	private AppActivity owner;
-	private LocationListAdapter listAdapter = null;
-	
-	public ServerListAction(View v, AppActivity owner) {
+    private ListView listLocation;
+    private AppActivity owner;
+    private LocationListAdapter listAdapter = null;
 
-		this.owner = owner;
-		listLocation = (ListView) v.findViewById(R.id.listLocation);
-		listLocation.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-		listLocation.setOnItemClickListener(this);
-	}
+    public ServerListAction(View v, AppActivity owner) {
 
-	public void loadLocations() {
-		if (listAdapter != null)
-			listAdapter = null;
+        this.owner = owner;
+        listLocation = (ListView) v.findViewById(R.id.listLocation);
+        listLocation.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
+        listLocation.setOnItemClickListener(this);
+    }
 
-		listAdapter = new LocationListAdapter(this.owner);
-		listLocation.setAdapter(listAdapter);
-		listLocation.invalidateViews();
-	}
-	
-	public void refreshLocations() {
-		listLocation.invalidateViews();
-	}
+    public void loadLocations() {
+        if (listAdapter != null)
+            listAdapter = null;
 
-	public void markActiveLocation(String loc) {
-		
-		if (listAdapter == null)
-			return;
-		
-		if (listAdapter.activeLocation == null || !listAdapter.activeLocation.equals(loc)) {
-			clearActiveLocation();
-			listAdapter.activeLocation = loc;
-			int i = listAdapter.locationIndexes.indexOf(listAdapter.activeLocation);
-			listLocation.getAdapter().getView(i + 1, 
-					null, listLocation);
-		}
-	}
-	public void clearActiveLocation() {
-		
-		if (listAdapter == null)
-			return;
-		
-		if (listAdapter.activeLocation != null) {
-			int i = listAdapter.locationIndexes.indexOf(listAdapter.activeLocation);
-			listAdapter.activeLocation = null;
-			listLocation.getAdapter().getView(i + 1, 
-					null, listLocation);
-			
-		}
-	}
-	@Override
-	public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
-		// TODO Auto-generated method stub
-		listAdapter.setSelectItem(pos);
-		ServerResponse selectedServer;
-		if (pos == 0)
-		{
-			selectedServer = IPChecker.getInstance(this.owner).randomServerForVpn();
-		} else
-		{
-			String sloc = listAdapter.locationIndexes.get(pos - 1);
-			selectedServer = IPChecker.getInstance(this.owner).serverForVpnByLocation(sloc);
-		}
-		this.owner.onSelectServer(selectedServer);
-	}
-	
-	
+        listAdapter = new LocationListAdapter(this.owner);
+        listLocation.setAdapter(listAdapter);
+        listLocation.invalidateViews();
+    }
+
+    public void refreshLocations() {
+        listLocation.invalidateViews();
+    }
+
+    public void markActiveLocation(String loc) {
+
+        if (listAdapter == null)
+            return;
+
+        if (listAdapter.activeLocation == null || !listAdapter.activeLocation.equals(loc)) {
+            clearActiveLocation();
+            listAdapter.activeLocation = loc;
+            int i = listAdapter.locationIndexes.indexOf(listAdapter.activeLocation);
+            listLocation.getAdapter().getView(i + 1,
+                    null, listLocation);
+        }
+    }
+
+    public void clearActiveLocation() {
+
+        if (listAdapter == null)
+            return;
+
+        if (listAdapter.activeLocation != null) {
+            int i = listAdapter.locationIndexes.indexOf(listAdapter.activeLocation);
+            listAdapter.activeLocation = null;
+            listLocation.getAdapter().getView(i + 1,
+                    null, listLocation);
+
+        }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> arg0, View arg1, int pos, long arg3) {
+        // TODO Auto-generated method stub
+        listAdapter.setSelectItem(pos);
+        ServerResponse selectedServer;
+        if (pos == 0) {
+            selectedServer = IPChecker.getInstance(this.owner).randomServerForVpn();
+        } else {
+            String sloc = listAdapter.locationIndexes.get(pos - 1);
+            selectedServer = IPChecker.getInstance(this.owner).serverForVpnByLocation(sloc);
+        }
+        this.owner.onSelectServer(selectedServer);
+    }
+
+
 }
 
 class LocationListAdapter extends BaseAdapter {
 
-	private List<ServerResponse> locations;
-	public Vector<String> locationIndexes;
-	public String activeLocation = null;
-	private int itemIndex = -1;
-	private Context c;
-	
-	public LocationListAdapter(Context c) {
-		this.c = c;
-		this.locations = IPChecker.getInstance(null).availableServerList();
-		this.locationIndexes= new Vector<String>();
-		for (int i = 0; i < this.locations.size(); i++) {
-			this.locationIndexes.add(this.locations.get(i).getIsoCode().trim());
-		}
-		Collections.sort(this.locationIndexes, (lhs, rhs) -> {
+    private List<ServerResponse> locations;
+    public Vector<String> locationIndexes;
+    public String activeLocation = null;
+    private int itemIndex = -1;
+    private Context c;
+
+    public LocationListAdapter(Context c) {
+        this.c = c;
+        this.locations = IPChecker.getInstance(null).availableServerList();
+        this.locationIndexes = new Vector<String>();
+        for (int i = 0; i < this.locations.size(); i++) {
+            this.locationIndexes.add(this.locations.get(i).getIsoCode().trim());
+        }
+        Collections.sort(this.locationIndexes, (lhs, rhs) -> {
             int range1 = lhs.lastIndexOf(" ");
             int range2 = rhs.lastIndexOf(" ");
             if (range1 == -1 || range2 == -1) {
@@ -142,50 +142,50 @@ class LocationListAdapter extends BaseAdapter {
             }
         });
 
-	}
+    }
 
-	public int getCount() {
-		// TODO Auto-generated method stub
-		if (locations.isEmpty())
-			return 0;
-		return locations.size() + 1;
-	}
+    public int getCount() {
+        // TODO Auto-generated method stub
+        if (locations.isEmpty())
+            return 0;
+        return locations.size() + 1;
+    }
 
-	public Object getItem(int position) {
-		// TODO Auto-generated method stub
-		return position;
-	}
+    public Object getItem(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
 
-	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		return position;
-	}
+    public long getItemId(int position) {
+        // TODO Auto-generated method stub
+        return position;
+    }
 
-	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
-		ViewHolder holder;
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // TODO Auto-generated method stub
+        ViewHolder holder;
 
-		if (convertView == null) {
-			LayoutInflater inflater = (LayoutInflater) c
-					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			convertView = inflater.inflate(R.layout.location_item_row, null);
-			
-			holder = new ViewHolder();
-			convertView.setTag(holder);
-		}else{
-			holder = (ViewHolder) convertView.getTag();
-		}
+        if (convertView == null) {
+            LayoutInflater inflater = (LayoutInflater) c
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.location_item_row, null);
 
-		holder.textItemLocation = (TextView) convertView.findViewById(R.id.textItemLocation);
-		holder.textItemLoad = (TextView) convertView.findViewById(R.id.textItemLoad);
-		holder.imageGo = (ImageView) convertView.findViewById(R.id.imageMark);
-		if (position == 0) {
-			holder.textItemLocation.setText("* Fastest node");
-			holder.textItemLoad.setText("(lowest load & ping)");
-		} else {
-			ServerResponse serverInfo = IPChecker.getInstance(null).serverForVpnByLocation(this.locationIndexes.get(position - 1));
-			String location = serverInfo.getIsoCode();
-			Integer load = Integer.parseInt(serverInfo.getServerLoad());
+            holder = new ViewHolder();
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
+        }
+
+        holder.textItemLocation = (TextView) convertView.findViewById(R.id.textItemLocation);
+        holder.textItemLoad = (TextView) convertView.findViewById(R.id.textItemLoad);
+        holder.imageGo = (ImageView) convertView.findViewById(R.id.imageMark);
+        if (position == 0) {
+            holder.textItemLocation.setText("* Fastest node");
+            holder.textItemLoad.setText("(lowest load & ping)");
+        } else {
+            ServerResponse serverInfo = IPChecker.getInstance(null).serverForVpnByLocation(this.locationIndexes.get(position - 1));
+            String location = serverInfo.getIsoCode();
+            Integer load = Integer.parseInt(serverInfo.getServerLoad());
 //			int imageId = R.drawable.ic_item_go;
 //			int colorId = Color.BLACK;
 //			if (
@@ -199,26 +199,25 @@ class LocationListAdapter extends BaseAdapter {
 //			holder.imageGo.setImageResource(imageId);
 //			holder.textItemLocation.setTextColor(colorId);
 //			holder.textItemLoad.setTextColor(colorId);
-			holder.textItemLocation.setText(location);
-			holder.textItemLoad.setText("("+load.toString() + "%" + ")");
+            holder.textItemLocation.setText(location);
+            holder.textItemLoad.setText("(" + load.toString() + "%" + ")");
 
-		}
-		return convertView;
-	}
-	
-	public void setSelectItem(int index) {
+        }
+        return convertView;
+    }
+
+    public void setSelectItem(int index) {
         itemIndex = index;
     }
 
     public int getSelectItem() {
         return itemIndex;
     }
-	
-	
-	
-	static class ViewHolder {
-		TextView textItemLocation, textItemLoad;
-		ImageView imageGo;
-	}
+
+
+    static class ViewHolder {
+        TextView textItemLocation, textItemLoad;
+        ImageView imageGo;
+    }
 }
 

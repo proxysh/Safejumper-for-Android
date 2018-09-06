@@ -440,6 +440,8 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
 
         profile.mUseUdp = protocol.contains("UDP");
         profile.mServerPort = port;
+        profile.mTLSAuthFilename = this.getCacheDir() + "/tlscrypt.crt";
+        profile.mTLSAuthDirection = "tls-crypt";
         profile.mUseTLSAuth = true;
 
         profile.mUsername = ConfigManager.activeUserName;
@@ -753,7 +755,7 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
                             activeVpnProfile.mUseUdp = ConfigManager.getInstance(this).prefStringForKey(ConfigManager.PK_LAST_PROTO).equals("UDP") ? true : false;
                         } else {
                             activeVpnProfile.mServerName = (String) IPChecker.getInstance(this).randomServerForVpn().getIp();
-                            activeVpnProfile.mServerPort = "443";
+                            activeVpnProfile.mServerPort = "8080";
                             activeVpnProfile.mUseUdp = false;
                         }
                     }
