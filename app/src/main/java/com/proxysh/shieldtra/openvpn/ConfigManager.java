@@ -13,7 +13,6 @@ import java.util.Arrays;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-import de.blinkt.openvpn.api.ExternalOpenVPNService;
 import de.blinkt.openvpn.core.VpnStatus;
 import android.content.Context;
 import android.content.SharedPreferences;

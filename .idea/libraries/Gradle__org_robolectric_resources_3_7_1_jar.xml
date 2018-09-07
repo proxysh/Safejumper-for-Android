@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.robolectric:resources:3.7.1@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/resources/3.7.1/3c7c07b9540b9aee7494c90312a884f202c7c1/resources-3.7.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/resources/3.7.1/9f2e2b3de69d8aee9d88cb37ace44c9154f192bc/resources-3.7.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

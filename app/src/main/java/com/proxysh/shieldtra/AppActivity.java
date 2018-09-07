@@ -14,7 +14,6 @@ import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -53,10 +52,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Collection;
 import java.util.List;
 
 import de.blinkt.openvpn.VpnProfile;
-import de.blinkt.openvpn.api.ExternalOpenVPNService;
+
 import de.blinkt.openvpn.api.IOpenVPNAPIService;
 import de.blinkt.openvpn.api.IOpenVPNStatusCallback;
 import de.blinkt.openvpn.core.ConfigParser;
@@ -65,7 +65,6 @@ import de.blinkt.openvpn.core.ConnectionStatus;
 import de.blinkt.openvpn.core.IOpenVPNServiceInternal;
 import de.blinkt.openvpn.core.LogItem;
 import de.blinkt.openvpn.core.OpenVPNService;
-import de.blinkt.openvpn.core.OpenVPNService.LocalBinder;
 import de.blinkt.openvpn.core.OpenVpnManagementThread;
 import de.blinkt.openvpn.core.ProfileManager;
 import de.blinkt.openvpn.core.VPNLaunchHelper;
@@ -440,9 +439,9 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
 
         profile.mUseUdp = protocol.contains("UDP");
         profile.mServerPort = port;
-        profile.mTLSAuthFilename = this.getCacheDir() + "/tlscrypt.crt";
-        profile.mTLSAuthDirection = "tls-crypt";
-        profile.mUseTLSAuth = true;
+//        profile.mTLSAuthFilename = this.getCacheDir() + "/tlscrypt.crt";
+//        profile.mTLSAuthDirection = "tls-crypt";
+//        profile.mUseTLSAuth = true;
 
         profile.mUsername = ConfigManager.activeUserName;
         profile.mPassword = ConfigManager.activePasswdOfUser;
@@ -1289,6 +1288,11 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
                             VpnStatus.updateStateString("USER_VPN_PASSWORD", "", R.string.state_user_vpn_password,
                                     ConnectionStatus.LEVEL_AUTH_FAILED);
                         } else {
+                            Log.i("ProfileManager", "Package Name: " + AppActivity.this.getPackageName());
+                            ProfileManager.updateLRU(AppActivity.this, activeVpnProfile);
+                            Collection<VpnProfile> vpnProfiles = ProfileManager.getInstance(AppActivity.this).getProfiles();
+                            Log.i("AppActivity", "VPN Profiles: " + vpnProfiles.size());
+
                             new startOpenVpnThread().start();
                             startStateListener();
                         }
