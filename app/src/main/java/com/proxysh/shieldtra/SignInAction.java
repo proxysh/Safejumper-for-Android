@@ -161,7 +161,7 @@ public class SignInAction implements SignInCallbackInterface {
             if (dialog == null || !dialog.isShowing()) {
                 dialog = ProgressDialog.show(owner, "", owner.getString(R.string.waiting_assist), true);
                 buttonSignIn.setEnabled(false);
-                IPChecker.getInstance(null).registerTo(editUsername.getText().toString(),
+                IPChecker.getInstance(owner).registerTo(editUsername.getText().toString(),
                         editpasswd.getText().toString(), configManager.prefBoolForKey(ConfigManager.PK_ALL_DISPLAY),
                         this);
             }

@@ -19,7 +19,7 @@ public class OnBootReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 
 		final String action = intent.getAction();
-		Log.i("haha", "-------");
+		Log.i("OnBootReceiver", "boot message received");
 		if(Intent.ACTION_BOOT_COMPLETED.equals(action)) {
 			lauchShieldtra(context);
 		}

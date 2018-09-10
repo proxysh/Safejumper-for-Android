@@ -34,6 +34,7 @@
 
 
     <application
+        android:name="de.blinkt.openvpn.core.ICSOpenVPNApplication"
         android:allowBackup="true"
         android:banner="@mipmap/banner_tv"
         android:icon="@drawable/ic_launcher"
@@ -225,20 +226,21 @@
             </intent-filter>
         </activity>
 
-        <!--<activity-->
-        <!--android:name=".api.Intents"-->
-        <!--android:autoRemoveFromRecents="true"-->
-        <!--android:excludeFromRecents="true"-->
-        <!--android:label="@string/vpn_launch_title"-->
-        <!--android:taskAffinity=".LaunchVPN"-->
-        <!--android:theme="@style/blinkt.dialog"-->
-        <!--tools:ignore="ExportedActivity">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN" />-->
+        <activity
+        android:name=".api.Intents"
+        android:autoRemoveFromRecents="true"
+        android:excludeFromRecents="true"
+        android:label="@string/vpn_launch_title"
+        android:taskAffinity=".LaunchVPN"
+        android:theme="@style/blinkt.dialog"
+        tools:ignore="ExportedActivity">
+        <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
 
-        <!--<category android:name="android.intent.category.DEFAULT" />-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
+        <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+        </activity>
+
         <activity
             android:name="de.blinkt.openvpn.activities.CreateShortcuts"
             android:excludeFromRecents="true"

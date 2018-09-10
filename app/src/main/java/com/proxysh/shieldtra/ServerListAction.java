@@ -87,10 +87,11 @@ public class ServerListAction implements OnItemClickListener {
         if (pos == 0) {
             selectedServer = IPChecker.getInstance(this.owner).randomServerForVpn();
         } else {
-            String sloc = listAdapter.locationIndexes.get(pos - 1);
-            selectedServer = IPChecker.getInstance(this.owner).serverForVpnByLocation(sloc);
+            ServerResponse sloc = listAdapter.locations.get(pos - 1);
+            selectedServer = IPChecker.getInstance(this.owner).serverForVpnByIp(sloc.getIp());
         }
-        this.owner.onSelectServer(selectedServer);
+        this.owner.chosenServer = selectedServer;
+        this.owner.onSelectServer();
     }
 
 
@@ -98,7 +99,7 @@ public class ServerListAction implements OnItemClickListener {
 
 class LocationListAdapter extends BaseAdapter {
 
-    private List<ServerResponse> locations;
+    public List<ServerResponse> locations;
     public Vector<String> locationIndexes;
     public String activeLocation = null;
     private int itemIndex = -1;

@@ -53,6 +53,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import de.blinkt.openvpn.VpnProfile;
@@ -127,6 +128,8 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
     private static boolean backgroundMode = false;
 
     private VpnProfile activeVpnProfile = null;
+
+    public ServerResponse chosenServer = null;
 
     @SuppressLint("HandlerLeak")
     private Handler pingHandler = new Handler() {
@@ -433,35 +436,35 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
 
     public void onSelectService(String protocol, String port) {
 
+//        TODO - Write code here
+//        Get config from server
+//        Pass to ConfigConverter
+//        Save VpnProfile with ProfileManager
+//        StartVpn with Profile
+//
         switchForAction(ActionType.SettingAction);
 
-        VpnProfile profile = defaultProfile();
+        HashMap<String, String> serverInfo = new HashMap<>();
+        serverInfo.put("ip", chosenServer.getIp());
+        serverInfo.put("port", port);
+        serverInfo.put("protocol", protocol.contains("UDP") ? "udp" : "tcp");
 
-        profile.mUseUdp = protocol.contains("UDP");
-        profile.mServerPort = port;
-//        profile.mTLSAuthFilename = this.getCacheDir() + "/tlscrypt.crt";
-//        profile.mTLSAuthDirection = "tls-crypt";
-//        profile.mUseTLSAuth = true;
-
-        profile.mUsername = ConfigManager.activeUserName;
-        profile.mPassword = ConfigManager.activePasswdOfUser;
-
-        if (currentAction == ActionType.ShieldtraAction)
+        if (currentAction == ActionType.ShieldtraAction) {
             requestState = RequestStatus.WantShieldtra;
-        else
+        } else {
             requestState = RequestStatus.WantConnect;
-
+        }
         mServiceSwitcher.stopVpn(false);
-        startVpn(profile);
+        IPChecker.getInstance(AppActivity.this).downloadOvpnTemplate(serverInfo);
     }
 
-    public void onSelectServer(ServerResponse server) {
+    public void onSelectServer() {
 
         VpnProfile profile = defaultProfile();
-        profile.mServerName = server.getIp();
+        profile.mServerName = AppActivity.this.chosenServer.getIp();
 
         if (tabBtnShieldtra.isSelected()) {
-            onSelectService("TCP", "8080");
+            onSelectService("TCP", "8888");
         } else {
             switchView(viewProtos);
         }
@@ -751,7 +754,7 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
                         if (ConfigManager.getInstance(this).prefBoolForKey(ConfigManager.PK_LAST_SUCCESS)) {
                             activeVpnProfile.mServerName = ConfigManager.getInstance(this).prefStringForKey(ConfigManager.PK_LAST_VPNSERVER);
                             activeVpnProfile.mServerPort = ConfigManager.getInstance(this).prefStringForKey(ConfigManager.PK_LAST_VPNPORT);
-                            activeVpnProfile.mUseUdp = ConfigManager.getInstance(this).prefStringForKey(ConfigManager.PK_LAST_PROTO).equals("UDP") ? true : false;
+                            activeVpnProfile.mUseUdp = ConfigManager.getInstance(this).prefStringForKey(ConfigManager.PK_LAST_PROTO).contains("UDP");
                         } else {
                             activeVpnProfile.mServerName = (String) IPChecker.getInstance(this).randomServerForVpn().getIp();
                             activeVpnProfile.mServerPort = "8080";
@@ -807,8 +810,8 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
         setIntent(intent);
     }
 
-    private void startVpn(final VpnProfile profile) {
-        ServerResponse serverInfo = IPChecker.getInstance(this).serverForVpnByIp(profile.mServerName);
+    public void startVpn(final VpnProfile profile) {
+        ServerResponse serverInfo = IPChecker.getInstance(AppActivity.this).serverForVpnByIp(profile.mServerName);
         final String location = serverInfo.getIsoCode();
         final String load = serverInfo.getServerLoad();
         final String proto = (profile.mUseUdp ? "UDP" : "TCP") + " " + profile.mServerPort;
@@ -1019,7 +1022,7 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
             }
 
             //TODO uncomment
-            if(!mUseAidlService) {
+            if (!mUseAidlService) {
 //				vpnService.setConfigurationIntent(getPendingIntent());
 //				vpnService.setNotificationIntent(getPendingIntent());
             }
@@ -1105,8 +1108,7 @@ public class AppActivity extends Activity implements OnClickListener, StateListe
                     Log.e(TAG, "stopVpn()", e);
                 }
             } else {
-                if (vpnService != null)
-                {
+                if (vpnService != null) {
                     try {
                         vpnService.stopVPN(true);
                     } catch (RemoteException e) {

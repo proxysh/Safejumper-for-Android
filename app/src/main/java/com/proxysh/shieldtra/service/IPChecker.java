@@ -4,16 +4,23 @@
  */
 package com.proxysh.shieldtra.service;
 
+import android.util.Log;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -30,14 +37,20 @@ import org.w3c.dom.Element;
 
 import com.proxysh.shieldtra.AppActivity;
 import com.proxysh.shieldtra.SignInCallbackInterface;
+import com.proxysh.shieldtra.openvpn.ConfigManager;
 import com.proxysh.shieldtra.service.network.ApiService;
 import com.proxysh.shieldtra.service.network.apimodel.AuthBody;
 import com.proxysh.shieldtra.service.network.apimodel.AuthResponse;
 import com.proxysh.shieldtra.service.network.apimodel.ServerResponse;
 
+import de.blinkt.openvpn.VpnProfile;
+import de.blinkt.openvpn.core.ConfigParser;
+import de.blinkt.openvpn.core.ProfileManager;
+import de.blinkt.openvpn.core.VpnStatus;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableSingleObserver;
+import okhttp3.ResponseBody;
 
 public class IPChecker {
 
@@ -85,45 +98,39 @@ public class IPChecker {
     public void registerTo(String username, String passwd, boolean enableAllLocation, SignInCallbackInterface callback) {
         c.appLog("--------Fetching servers list----------");
         (new CompositeDisposable()).add(
-                ApiService.getInstance().getApiService().login(new AuthBody(username, passwd))
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<AuthResponse>() {
-                            @Override
-                            public void onSuccess(AuthResponse authResponse) {
-                                credentials.clear();
-                                credentials.put(TAG_USERNAME, username);
-                                credentials.put(TAG_PASSWORD, passwd);
-                                if (authResponse != null && authResponse.getUser() != null) {
-                                    serverList.clear();
-                                    serverList.addAll(authResponse.getServers());
-                                    if (serverList.size() > 0) {
-                                        c.appLog("List of servers was obtained and validated. Server of list contains "
-                                                + serverList.size() + " elements.");
-                                        mustUseOvpnTemplate = downloadOvpnTemplate();
-                                    } else {
-                                        c.appLog("Failed to get the list of server. Most likely the problem of response parsing. Please check your version.");
-                                    }
-                                    callback.signInFinished(true);
-                                } else if (authResponse != null && authResponse.getErrorMsg() != null) {
-                                    callback.signInFinished(false);
-                                }
-                            }
-
-                            @Override
-                            public void onError(Throwable e) {
-                                c.appLog("Cannot connect to IPChecker server for authentication. Please check your internet connection.");
-                                callback.signInFinished(false);
-                            }
-                        })
-        );
-    }
-
-    public void loadServersList() {
-        (new CompositeDisposable()).add(
                 ApiService.getInstance().getApiService().getServerList()
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribeWith(new DisposableSingleObserver<List<ServerResponse>>() {
+                        .doOnSuccess(sList -> ApiService.getInstance().getApiService().login(new AuthBody(username, passwd))
+                                .observeOn(AndroidSchedulers.mainThread())
+                                .subscribeWith(new DisposableSingleObserver<AuthResponse>() {
+                                    @Override
+                                    public void onSuccess(AuthResponse authResponse) {
+                                        credentials.clear();
+                                        credentials.put(TAG_USERNAME, username);
+                                        credentials.put(TAG_PASSWORD, passwd);
+                                        if (authResponse != null && authResponse.getUser() != null) {
+                                            serverList.clear();
+                                            serverList.addAll(authResponse.getServers());
+                                            if (serverList.size() > 0) {
+                                                c.appLog("List of servers was obtained and validated. Server of list contains "
+                                                        + serverList.size() + " elements.");
+//                                                mustUseOvpnTemplate = downloadOvpnTemplate();
+                                            } else {
+                                                c.appLog("Failed to get the list of server. Most likely the problem of response parsing. Please check your version.");
+                                            }
+                                            callback.signInFinished(true);
+                                        } else if (authResponse != null && authResponse.getErrorMsg() != null) {
+                                            callback.signInFinished(false);
+                                        }
+                                    }
 
+                                    @Override
+                                    public void onError(Throwable e) {
+                                        c.appLog("Cannot connect to IPChecker server for authentication. Please check your internet connection.");
+                                        callback.signInFinished(false);
+                                    }
+                                }))
+                        .subscribeWith(new DisposableSingleObserver<List<ServerResponse>>() {
                             @Override
                             public void onSuccess(List<ServerResponse> serverResponses) {
                                 if (serverResponses != null) {
@@ -134,36 +141,76 @@ public class IPChecker {
 
                             @Override
                             public void onError(Throwable e) {
-                                c.appLog("Cannot connect to IPChecker server for authentication. Please check your internet connection.");
+                                c.appLog("Cannot connect to IPChecker server for fetching servers list. Please check your internet connection.");
+                                callback.signInFinished(false);
                             }
                         })
         );
     }
 
-    public boolean downloadOvpnTemplate() {
-
+    public void downloadOvpnTemplate(Map<String, String> serverParams) {
         c.appLog("--------Downloading openvpn config template file servers----------");
-        try {
-            URL u = new URL(SURL_OVPNTEMPLATE);
-            URLConnection conn = u.openConnection();
-            int contentLength = conn.getContentLength();
+        (new CompositeDisposable()).add(
+                ApiService.getInstance().getApiService().getServerConfigs(serverParams)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeWith(new DisposableSingleObserver<ResponseBody>() {
+                            @Override
+                            public void onSuccess(ResponseBody responseBody) {
+                                ConfigParser cp = new ConfigParser();
+                                try {
+                                    cp.parseConfig(responseBody.charStream());
+                                    VpnProfile vp = cp.convertProfile();
+                                    vp.mUsername = ConfigManager.activeUserName;
+                                    vp.mPassword = ConfigManager.activePasswdOfUser;
+                                    vp.mProfileCreator = "com.proxysh.shieldtra.service.IPChecker";
+                                    // We don't want provisioned profiles to be editable
+                                    vp.mUserEditable = false;
 
-            DataInputStream stream = new DataInputStream(u.openStream());
+                                    vp.setUUID(UUID.randomUUID());
+                                    vp.mServerName = serverParams.get("ip");
 
-            byte[] buffer = new byte[contentLength];
-            stream.readFully(buffer);
-            stream.close();
+                                    if (c != null){
+                                        ProfileManager pm = ProfileManager.getInstance(c);
 
-            File outputFile = new File(c.getCacheDir(), OVPN_TEMPLATE_FILENAME);
-            DataOutputStream fos = new DataOutputStream(new FileOutputStream(outputFile));
-            fos.write(buffer);
-            fos.flush();
-            fos.close();
+                                        // The add method will replace any older profiles with the same UUID
+                                        pm.addProfile(vp);
+                                        pm.saveProfile(c, vp);
+                                        pm.saveProfileList(c);
+                                        c.startVpn(vp);
+                                    }
+                                } catch (ConfigParser.ConfigParseError | IOException | IllegalArgumentException e) {
+                                    VpnStatus.logException("Error during import of managed profile", e);
+                                }
+                            }
 
-            return true;
-        } catch (Exception e) {
-            return false; // swallow a 404
-        }
+                            @Override
+                            public void onError(Throwable e) {
+                                c.appLog("Cannot connect to server for downloading openvpn config template file. Please check your internet connection.");
+                            }
+                        })
+        );
+
+//        try {
+//            URL u = new URL(SURL_OVPNTEMPLATE);
+//            URLConnection conn = u.openConnection();
+//            int contentLength = conn.getContentLength();
+//
+//            DataInputStream stream = new DataInputStream(u.openStream());
+//
+//            byte[] buffer = new byte[contentLength];
+//            stream.readFully(buffer);
+//            stream.close();
+//
+//            File outputFile = new File(c.getCacheDir(), OVPN_TEMPLATE_FILENAME);
+//            DataOutputStream fos = new DataOutputStream(new FileOutputStream(outputFile));
+//            fos.write(buffer);
+//            fos.flush();
+//            fos.close();
+//
+//            return true;
+//        } catch (Exception e) {
+//            return false; // swallow a 404
+//        }
     }
 
     public boolean loadServerInfo(HashMap<String, Object> serverInfo) {
@@ -221,7 +268,7 @@ public class IPChecker {
 
     public ServerResponse randomServerForVpn() {
 //        int index = ThreadLocalRandom.current().nextInt(0, serverList.size());
-        int index = (int)(Math.random() * serverList.size());
+        int index = (int) (Math.random() * serverList.size());
         return serverList.get(index);
     }
 
