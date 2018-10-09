@@ -19,7 +19,7 @@
     <dimen name="control_vertical_margin">24dp</dimen>
     <dimen name="control_horizontal_margin">32dp</dimen>
     <dimen name="predefined_bottom_margin">80dp</dimen>
-	<dimen name="item_height">44dp</dimen>
+    <dimen name="item_height">44dp</dimen>
 
     <bool name="logSildersAlwaysVisible">true</bool>
 
