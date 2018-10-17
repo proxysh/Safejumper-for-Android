@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ ~ Copyleft (/c) MMXV, Proxy.sh
+ ~ Distributed under the GNU GPL v2
+  -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/ic_item_go" android:state_pressed="false" android:state_selected="false"/>
+    <item android:drawable="@drawable/ic_item_go_active" android:state_pressed="true"/>
+    <item android:drawable="@drawable/ic_item_go_active" android:state_pressed="false" android:state_selected="true"/>
+
+</selector>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ ~ Copyleft (/c) MMXV, Proxy.sh
+ ~ Distributed under the GNU GPL v2
+  -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+     >
+
+    <RelativeLayout
+        android:id="@+id/viewContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/logo_vertical_margin"
+        android:gravity="top" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/editor_interval_margin"
+            android:src="@drawable/logo_big" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/editor_horizontal_margin"
+            android:layout_marginRight="@dimen/editor_horizontal_margin"
+            android:layout_below="@+id/imageView1"
+            android:layout_marginTop="@dimen/editor_interval_margin"
+            android:layout_marginBottom="@dimen/editor_interval_margin"
+            android:background="@drawable/editor_rounded_edge" >
+
+            <EditText
+                android:id="@+id/editUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_username"
+                android:drawablePadding="@dimen/control_horizontal_margin"
+                android:hint="@string/username"
+                android:imeOptions="normal"
+                android:inputType="text|none|textPersonName"
+                android:textColorHint="@color/HintTextColor" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/linearLayout2"
+            android:layout_alignRight="@+id/linearLayout2"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_marginBottom="@dimen/editor_interval_margin"
+            android:background="@drawable/editor_rounded_edge" >
+
+            <EditText
+                android:id="@+id/editPasswd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_password"
+                android:drawablePadding="@dimen/control_horizontal_margin"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:scrollHorizontally="true"
+                android:textColorHint="@color/HintTextColor" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/linearLayout2"
+            android:layout_alignRight="@+id/linearLayout2"
+            android:layout_below="@+id/linearLayout3"
+            >
+
+            <CheckBox
+                android:id="@+id/checkSaveMe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/control_horizontal_margin"
+                android:button="@drawable/checkbox_selector"
+                android:paddingLeft="@dimen/checkbox_padding"
+                android:text="@string/remember_me"
+                android:textColor="@color/HintTextColor"
+                android:textColorHint="@color/HintTextColor" />
+
+            <Button
+                android:id="@+id/buttonSignIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/action_button_margin_right"
+                android:background="@android:color/transparent"
+                android:drawablePadding="@dimen/action_button_drawing_padding"
+                android:drawableRight="@drawable/ic_go"
+                android:text="@string/sign_in"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/ActionTextColor" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignLeft="@+id/linearLayout2"
+            android:layout_alignRight="@+id/linearLayout2"
+            android:layout_below="@+id/RelativeLayout1"
+            android:layout_marginTop="@dimen/predefined_bottom_margin" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="@dimen/control_vertical_margin"
+                android:text="@string/predefined_options"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/HintTextColor"
+                android:textStyle="bold" />
+
+            <CheckBox
+                android:id="@+id/checkAutoLaunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView2"
+                android:layout_marginBottom="@dimen/control_vertical_margin"
+                android:layout_marginLeft="@dimen/control_horizontal_margin"
+                android:button="@drawable/checkbox_selector"
+                android:paddingLeft="@dimen/checkbox_padding"
+                android:text="@string/setting_option2"
+                android:textColor="@color/HintTextColor"
+                android:textColorHint="@color/HintTextColor" />
+
+            <CheckBox
+                android:id="@+id/checkAllDisplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/checkAutoLaunch"
+                android:layout_below="@+id/checkAutoLaunch"
+                android:layout_marginBottom="@dimen/control_vertical_margin"
+                android:button="@drawable/checkbox_selector"
+                android:paddingLeft="@dimen/checkbox_padding"
+                android:text="@string/setting_option7"
+                android:textColor="@color/HintTextColor"
+                android:textColorHint="@color/HintTextColor" />
+            <Spinner
+                android:id="@+id/spnIcsOpenVpn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/checkAutoLaunch"
+                android:layout_below="@+id/checkAllDisplay"
+                android:layout_marginTop="@dimen/control_vertical_margin"
+                android:paddingLeft="@dimen/checkbox_padding"
+                android:entries="@array/ics_openvpn_labels"
+                />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/viewWaiting"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <ProgressBar
+            android:id="@+id/progressWaiting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/progressWaiting"
+            android:layout_centerHorizontal="true"
+            android:text="@string/waiting_assist"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/HintTextColor" />
+    </RelativeLayout>
+
+</RelativeLayout>
