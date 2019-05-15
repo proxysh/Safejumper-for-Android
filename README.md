@@ -1,4 +1,4 @@
-# Shieldtra for Android
+# Safejumper for Android
 
 This piece of software is a custom OpenVPN client for Android. It has been specifically designed to work with the Proxy.sh VPN network.
 
